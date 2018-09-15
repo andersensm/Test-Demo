@@ -15,7 +15,7 @@ time, mark, audio, video {
   font-family: 'Raleway', sans-serif;
 }
 html, body {
-  background-image: url("../images/City-Test.jpg");
+  background-image: url("../images/City-Test2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   padding: 0;
@@ -31,7 +31,7 @@ html, body {
   border-radius: 25px;
 }
 #mapContainer {
-  margin: 50px 0px;
+  margin: 100px 0px;
   padding: 2em;
   border-radius: 20px;
   background-image: url("../images/Wood-2.jpg");
@@ -50,16 +50,19 @@ a.btn.btn-outline-secondary.red {
   color: red;
 }
 a.navbar-brand {
-  color: white;
+  color: black;
   font-size: 2rem;
 }
 .navbar a:not(.btn):not(.dropdown-item) {
-  color: white;
+  color: red;
+  font-weight: bold;
 }
 .font20 {
   font-size: 20px;
 }
 .arcGisFooter{
-  color: red;
+  color: black;
   font-weight: bold;
+  height: 70px;
+  background-color: white;
 }

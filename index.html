@@ -14,12 +14,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/semantic.min.css">
 
   <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-  integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-  crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-  integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-  crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
 
 
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -34,9 +30,7 @@
 
 
   <!-- Load Esri Leaflet from CDN -->
-  <script src="https://unpkg.com/esri-leaflet@2.2.3/dist/esri-leaflet.js"
-integrity="sha512-YZ6b5bXRVwipfqul5krehD9qlbJzc6KOGXYsDjU9HHXW2gK57xmWl2gU6nAegiErAqFXhygKIsWPKbjLPXVb2g=="
-crossorigin=""></script>
+  <script src="https://unpkg.com/esri-leaflet@2.2.3/dist/esri-leaflet.js" integrity="sha512-YZ6b5bXRVwipfqul5krehD9qlbJzc6KOGXYsDjU9HHXW2gK57xmWl2gU6nAegiErAqFXhygKIsWPKbjLPXVb2g==" crossorigin=""></script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -46,36 +40,35 @@ crossorigin=""></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-light navbar-transparent ">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-brand" href="#">Socially Determined Demo</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="censusDataGov" type="checkbox" /><i class="fa fa-user-check" aria-hidden="true"></i>    Census-Data.Gov ShapeFiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="CDC-ArcGIS Online" data-content="CDC- 4 Primary Themes with Important Statistics to measuring Health Concerns" class="btn btn-outline-secondary" href="#"><input id="cdc" type="checkbox" /><i class="fa fa-user-check" aria-hidden="true"></i>    CDC-Social Vulnerability Index ArcGisOnline</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Hospital Ratings-ArcGIS Online" data-content="Medicare & Medicaid Services-Hospital ArcGisOnline" class="btn btn-outline-secondary" href="#"><input id="medicareMedicaid" type="checkbox" /><i class="fa fa-user-check" aria-hidden="true"></i>    Medicare & Medicaid Services-Hospital ArcGisOnline</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Medicare Spending Per Patient 2016" data-content="Medicare Spending Per Patient 2016" class="btn btn-outline-secondary" href="#"><input id="medicareSpending" type="checkbox" /><i class="fa fa-user-check" aria-hidden="true"></i>    Medicare Spending Per Patient 2016</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-<div class="container">
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau"
-          class="btn btn-outline-secondary" href="#" ><input id="censusDataGov" type="checkbox" />Census-Data.Gov ShapeFiles<i class="fa fa-user-check" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item">
-        <a data-placement="bottom" data-trigger="hover" data-toggle="popover" title="CDC-ArcGIS Online" data-content="CDC- 4 Primary Themes with Important Statistics to measuring Health Concerns"
-          class="btn btn-outline-secondary" href="#"><input id="cdc" type="checkbox" />CDC-Social Vulnerability Index ArcGisOnline<i class="fa fa-user-check" aria-hidden="true"></i></a>
-      </li>
-      <li class="nav-item">
-        <a data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Hospital Ratings-ArcGIS Online" data-content="Medicare & Medicaid Services-Hospital ArcGisOnline"
-          class="btn btn-outline-secondary" href="#"><input id="medicareMedicaid" type="checkbox" />Medicare & Medicaid Services-Hospital ArcGisOnline<i class="fa fa-user-check" aria-hidden="true"></i></a>
-      </li>
-    </ul>
-  </div>
-</nav>
-</div>
 
   <div class="container">
     <div class="row">
       <div id="mapContainer" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div id="map"></div>
-    </div>
+        <div id="map"></div>
+      </div>
     </div>
   </div>
 
@@ -86,5 +79,8 @@ crossorigin=""></script>
 
 
 </body>
+<footer class="footer">
+  <p class="text-center arcGisFooter">&copy; Copyright 2018 Sean Andersen</p>
+</footer>
 
 </html>
