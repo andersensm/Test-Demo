@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Load Leaflet from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="https://unpkg.com/esri-leaflet/dist/esri-leaflet.js"></script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-light navbar-transparent ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+<div class="container">
+  <div class="collapse navbar-collapse" id="navbarColor02">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="btn btn-outline-secondary" href="index.html"><i class="fa fa-home" aria-hidden="true"></i>Census Tracks-Census.Gov</a>
+      </li>
+      <li class="nav-item">
+        <a data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Zillow API" data-content="CDC- 4 Primary Themes with Important Statistics to measuring Health Concerns"
+          class="btn btn-outline-secondary" href="#" id="test"><i class="fa fa-search" aria-hidden="true"></i>CDC-Social Vulnerability Index</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</div>
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <div id="mapContainer" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div id="map"></div>
+    </div>
+    </div>
+  </div>
+
+  <script>
+    var map = L.map('map').setView([37.5739280, -78.5291687], 7);
+    L.esri.basemapLayer("Streets").addTo(map);
+
+    //START/////Downloaded from Census.gov, unchanged//
+    var virginiaCounties = L.esri.featureLayer({
+      url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/CensusCounties_VA_Shp/FeatureServer/0?token=i-6fulr7HvDsbK_kNQWbu175yX-CY_GIy2P2mdrekaeg4iJVB4LjGagkc3LeroET57DkujSm8WQ6wajDZSI5PPrBA7egl-__aE-m3yAEmZwckl-PidD-NA63UpqGexEQP2OB2NJRTAWeGnqLUJ_5Rlm7zktGPWdthPYTelYyDZIkFyjEryyumShszZZxcUApCQt4Tppx7btduI_LWgZZtRWV9PlnQ28bHnP4NEDeTy8qGbwJt95Jpl6mE-HPGhYa"
+    }).addTo(map);
+    //
+    var popupTemplate = "<h3>{NAMELSAD}</h3>{ALAND} Land Area<br><h4>Lat: {INTPTLAT}</h4><br><h4>Lng: {INTPTLON}</h4>";
+    //
+    virginiaCounties.bindPopup(function(e) {
+      return L.Util.template(popupTemplate, e.feature.properties)
+    });
+    //END/////Downloaded from Census.gov, unchanged//
+
+
+
+  </script>
+
+</body>
+
+</html>
