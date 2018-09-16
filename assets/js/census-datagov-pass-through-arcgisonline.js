@@ -111,7 +111,44 @@ var dmvCounties = L.esri.featureLayer({
   }
 })
 
-var cdcCounties = L.esri.featureLayer({
+var dmvTracks = L.esri.featureLayer({
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/CensusTracks_Median_Household_Income_MD_VA_DC/FeatureServer/0?token=fUWvAEryKlQCZfJAXu3WvkdI8UI3AI7oYJP32IZZHvVLDrTrG5pt-egYMvc0nj3ocJnvE7-nS8Qr9UILfrx50iPrYqg-8d0B2qcSyzBdSotHW5VH-OQclub6QPSvZBYtE-LNYUwuKAxF3B6jrNSUjNpxZXZy-GuIZWHE0rm-RbA80cYUwrAALUNp9eDZwAXYehx2QF3n6c6DkvAh2NtcuUc8V3V2JjSjPgV_z4qxUgDcc3ZAxZTkcTIlLrU7hlFA",
+  style: function(feature) {
+    if (feature.properties.B19013e1 >= '100000') {
+      return {
+        color: '#006400',
+        weight: 2
+      };
+    } else if ((feature.properties.B19013e1 < '100000') & (feature.properties.B19013e1 >= '90000')) {
+      return {
+        color: '#32CD32',
+        weight: 2
+      };
+    } else if ((feature.properties.B19013e1 < '90000') & (feature.properties.B19013e1 >= '80000')) {
+      return {
+        color: 'yellow',
+        weight: 2
+      };
+    } else if ((feature.properties.B19013e1 < '80000') & (feature.properties.B19013e1 >= '70000')) {
+      return {
+        color: '#FF4500',
+        weight: 1
+      };
+    } else if ((feature.properties.B19013e1 < '70000') & (feature.properties.B19013e1 >= '40000')) {
+      return {
+        color: 'red',
+        weight: 1
+      };
+    } else if (feature.properties.B19013e1 < '70000') {
+      return {
+        color: '#8B0000',
+        weight: 1
+      };
+    }
+  }
+})
+
+var cdcTracks = L.esri.featureLayer({
   url: "https://services3.arcgis.com/ZvidGQkLaDJxRSJ2/arcgis/rest/services/Overall_2014_Tracts/FeatureServer/1",
   style: function(feature) {
     if (feature.properties.RPL_THEMES >= '0.80') {
@@ -174,7 +211,7 @@ var hospitalRatings = L.esri.featureLayer({
 
 $("#censusDataGov").on("click", function() {
   if (this.checked === true) {
-    //START/////Downloaded from Census.gov, unchanged//
+    //START/////Downloaded from Census.gov, table join with other census data to account for MEAN non-family household income information//
     dmvCounties.addTo(map);
     //
     var popupTemplate = "<h3>{GEO_displa}</h3><h4>{NAMELSAD}<h4><h5>Non-Family Household Mean Income: <strong>{HC04_EST_1}<strong></h5>";
@@ -182,21 +219,37 @@ $("#censusDataGov").on("click", function() {
     dmvCounties.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
-    //END/////Downloaded from Census.gov, unchanged//
+    //END/////Downloaded from Census.gov//
   } else {
     map.removeLayer(dmvCounties)
   }
 })
 
-$("#cdc").on("click", function() {
+$("#censusDataGov2").on("click", function() {
   if (this.checked === true) {
-    cdcCounties.addTo(map);
-    var popupTemplate = "<h3>{LOCATION}</h3><br><h4>Socio Economic Vulnerability Index-CDC</h4><br><h5>Vulnerability Rating(1-High, 0-Low): <strong>{RPL_THEMES}<strong></h5>";
-    cdcCounties.bindPopup(function(e) {
+    //START/////Downloaded from Census.gov, table join with other census data to account for MEDIAN household income information//
+    dmvTracks.addTo(map);
+    var popupTemplate = "<h3>Median Household Income by Census Track: <strong>{B19013e1}<strong></h3>";
+    dmvTracks.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
+    //END/////Downloaded from Census.gov//
   } else {
-    map.removeLayer(cdcCounties)
+    map.removeLayer(dmvTracks)
+  }
+})
+
+$("#cdc").on("click", function() {
+  if (this.checked === true) {
+    //START/////Downloaded from ArcGIS Online Living Atlas//
+    cdcTracks.addTo(map);
+    var popupTemplate = "<h3>{LOCATION}</h3><br><h4>Socio Economic Vulnerability Index-CDC</h4><br><h5>Vulnerability Rating(1-High, 0-Low): <strong>{RPL_THEMES}<strong></h5>";
+    cdcTracks.bindPopup(function(e) {
+      return L.Util.template(popupTemplate, e.feature.properties)
+    });
+    //END/////Downloaded from ArcGIS Online Living Atlas//
+  } else {
+    map.removeLayer(cdcTracks)
   }
 })
 
