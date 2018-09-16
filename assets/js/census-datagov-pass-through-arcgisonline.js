@@ -112,7 +112,7 @@ var dmvCounties = L.esri.featureLayer({
 })
 
 var cdcCounties = L.esri.featureLayer({
-  url: "https://services3.arcgis.com/ZvidGQkLaDJxRSJ2/arcgis/rest/services/Socioeconomic_2014_Counties/FeatureServer/0",
+  url: "https://services3.arcgis.com/ZvidGQkLaDJxRSJ2/arcgis/rest/services/Overall_2014_Tracts/FeatureServer/1",
   style: function(feature) {
     if (feature.properties.RPL_THEMES >= '0.80') {
       return {
