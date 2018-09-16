@@ -54,7 +54,7 @@ a.navbar-brand {
   font-size: 2rem;
 }
 .navbar a:not(.btn):not(.dropdown-item) {
-  color: red;
+  color: #00FFFF;
   font-weight: bold;
 }
 .font20 {
@@ -65,4 +65,7 @@ a.navbar-brand {
   font-weight: bold;
   height: 70px;
   background-color: white;
+}
+.red {
+  color: red;
 }
