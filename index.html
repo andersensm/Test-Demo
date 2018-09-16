@@ -41,14 +41,22 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="navbar-brand" href="#">Socially Determined Demo</div>
+    <div class="navbar-brand col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12" href="#">Socially Determined Demo</div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="censusDataGov" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>    Census-Data.Gov ShapeFiles</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Census Data
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="censusDataGov" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>    Census-Data.Gov ShapeFiles</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="CDC-ArcGIS Online" data-content="CDC- 4 Primary Themes with Important Statistics to measuring Health Concerns" class="btn btn-outline-secondary" href="#"><input id="cdc" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>    CDC-Social Vulnerability Index ArcGisOnline</a>
@@ -62,6 +70,8 @@
       </ul>
     </div>
   </nav>
+
+
 
 
   <div class="container">
