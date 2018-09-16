@@ -208,37 +208,10 @@ var hospitalRatings = L.esri.featureLayer({
   }
 })
 
-var hospitalRatingDensity = L.esri.featureLayer({
-  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Hospital_Information_Num_Rating_Density4/FeatureServer/0?token=9XxKfiyUe3YpPDT1q2G8WSATJD5Pl6dO-ObeU-3ub_A5rrjptIrpneujGefp-FgCuvzT-XWx1ZFE8VVYQqqhodI_Luw7rBTDB-eLZ9wnm6kAt9fmL__OYjlu_czg0xnZXJr6XDJC99ECSG6uCI5ICjy32gTVC7ehzplj_X9yFDzImd5q8nvLqyP5VY0Fvhto1ogJTA3P0FBEX8T4Wm1Qx-bmUvjVKrSPNiGLsQd9UJdpaeTq10YCQIRV8ZC-R_J2",
-  style: function(feature) {
-    // if ((feature.properties.Value_Min_per_SquareKilometer < '0.0') & (feature.properties.Value_Max_per_SquareKilometer >= '0.00875825583935')) {
-    //   return {
-    //     color: '#8B0000',
-    //     weight: 2
-    //   };
-    // } else if ((feature.properties.Value_Min_per_SquareKilometer < '0.00875825583935') & (feature.properties.Value_Max_per_SquareKilometer >= '0.0175165116787')) {
-    //   return {
-    //     color: 'orange',
-    //     weight: 2
-    //   };
-    } else if ((feature.properties.Value_Min_per_SquareKilometer < '0.00875825583935') & (feature.properties.Value_Max_per_SquareKilometer >= '0.0175165116787')) {
-      return {
-        color: 'yellow',
-        weight: 2
-      };
-    } else if ((feature.properties.Value_Min_per_SquareKilometer < '0.00875825583935') & (feature.properties.Value_Max_per_SquareKilometer >= '0.0175165116787')) {
-      return {
-        color: '#32CD32',
-        weight: 1
-      };
-    } else {
-      return {
-        color: '#006400',
-        weight: 2
-      };
-    }
-  }
+var hospitalRatingDensity = L.esri.tiledMapLayer({
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Hospital_Information_Num_Rating_Density4/MapServer?token=MXl6qC994rUpFrWBmu_FVAehZPSfHo7dF2Dzv_FFhX4cXCKQGjN4O5gl020kB0x6si8Sf5dApD_Mj7q0vqEyazvfwQHCIxS0Nusw5Wmll6G0c8qnO1-N_DvAksuTgT0GFwPGByPT6t4QvLWB8uLW147iY1qPLh6VDF-QbE_zCcdHCF29OxgFGp6tXd2DRv7_MWddijNmIIhpYmzHCIxIG8dMxdwDne3kmwg3pMwYBPPdh7txEWeJ0w_2XmJT5MCX"
 })
+
 
 
 $("#censusDataGov").on("click", function() {
@@ -300,10 +273,6 @@ $("#medicareMedicaid").on("click", function() {
 $("#hospitalRatingDensity").on("click", function() {
   if (this.checked === true) {
     hospitalRatingDensity.addTo(map);
-    // var popupTemplate = "<h3>{Hospital_Name}</h3><br><h4>Medicare & Medicaid Certified Hospital Ratings</h4><br><h5>Hospital Rating(5-Best, 1-Worste): <strong>{Hospital_overall_rating}<strong></h5>";
-    // hospitalRatingDensity.bindPopup(function(e) {
-    //   return L.Util.template(popupTemplate, e.feature.properties)
-    // });
   } else {
     map.removeLayer(hospitalRatingDensity)
   }
