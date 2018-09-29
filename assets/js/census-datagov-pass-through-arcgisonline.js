@@ -2,38 +2,7 @@ var map = L.map('map').setView([38.9072, -77.0369], 10);
 L.esri.basemapLayer("Streets").addTo(map);
 
 //
-// var iconsHospitalRankings = {
-//   best: L.ExtraMarkers.icon({
-//     icon: 'fa-hospital-symbol',
-//     markerColor: 'green-dark',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   }),
-//   secondBest: L.ExtraMarkers.icon({
-//     icon: 'fa-hospital-symbol',
-//     markerColor: 'green-light',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   }),
-//   mediocre: L.ExtraMarkers.icon({
-//     icon: 'fa-hospital-symbol',
-//     markerColor: 'yellow',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   }),
-//   secondWorste: L.ExtraMarkers.icon({
-//     icon: 'fa-hospital-symbol',
-//     markerColor: 'orange',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   }),
-//   worste: L.ExtraMarkers.icon({
-//     icon: 'fa-hospital-symbol',
-//     markerColor: 'red',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   })
-// };
+
 //
 // var iconsMedicareSpending = {
 //   best: L.ExtraMarkers.icon({
@@ -292,33 +261,7 @@ var censusBlockGroups2016 = L.esri.featureLayer({
 //   }
 // })
 //
-// ///Medicare & Medicaid Services Compare Information///////////
-// var hospitalRatings = L.esri.featureLayer({
-//   url: "https://services1.arcgis.com/4yjifSiIG17X0gW4/arcgis/rest/services/Hospital_General_Information/FeatureServer/0",
-//   pointToLayer: function(feature, latlng) {
-//     if (feature.properties.Hospital_overall_rating === '5') {
-//       return L.marker(latlng, {
-//         icon: iconsHospitalRankings.best
-//       })
-//     } else if (feature.properties.Hospital_overall_rating === '4') {
-//       return L.marker(latlng, {
-//         icon: iconsHospitalRankings.secondBest
-//       })
-//     } else if (feature.properties.Hospital_overall_rating === '3') {
-//       return L.marker(latlng, {
-//         icon: iconsHospitalRankings.mediocre
-//       })
-//     } else if (feature.properties.Hospital_overall_rating === '2') {
-//       return L.marker(latlng, {
-//         icon: iconsHospitalRankings.secondWorste
-//       })
-//     } else {
-//       return L.marker(latlng, {
-//         icon: iconsHospitalRankings.worste
-//       })
-//     }
-//   }
-// })
+
 //
 // var hospitalRatingDensity = L.esri.tiledMapLayer({
 //   url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Hospital_Information_Num_Rating_Density4/MapServer?token=MXl6qC994rUpFrWBmu_FVAehZPSfHo7dF2Dzv_FFhX4cXCKQGjN4O5gl020kB0x6si8Sf5dApD_Mj7q0vqEyazvfwQHCIxS0Nusw5Wmll6G0c8qnO1-N_DvAksuTgT0GFwPGByPT6t4QvLWB8uLW147iY1qPLh6VDF-QbE_zCcdHCF29OxgFGp6tXd2DRv7_MWddijNmIIhpYmzHCIxIG8dMxdwDne3kmwg3pMwYBPPdh7txEWeJ0w_2XmJT5MCX"
@@ -391,7 +334,6 @@ $("#censusDataGov4").on("click", function() {
 })
 
 ///////////////////PARKS////////////////////
-
 var parks = L.esri.featureLayer({
   url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Arlington_Parks/FeatureServer/0?token=K_wX2hbQdcqeKMcLoCRLw9hw1TEx1POdF06zRsAGGChJfdCHvQXXRzjMBOodiKrLIlHHC0PbdvRgdnNTaK2zZYX1F2pStnIBRjDHzRfVXRPJ5-r6ymWaKUaU3hGBxJXKdiO2zqxfGTOV5vBiopxWF2gBOsn8x4KwnNg4Dl5VOSFfxNnPAt-EVrCUmMOe00InSJTAGtIehoMz014kfDO86kLgchb_70tcooxRVE6AzDu7mQXJbjAiK89nfOGCo6RN",
   style: function(feature) {
@@ -401,24 +343,126 @@ var parks = L.esri.featureLayer({
       };
     }
 })
-
 $("#parks").on("click", function() {
   if (this.checked === true) {
-    //START/////Downloaded from Census.gov, table join with other census data to account for MEAN non-family household income information//
     parks.addTo(map);
-    //
     var popupTemplate = "<h3>Arlington County Parks</h3><h4><strong>{ParkName}</strong><h4><h5>Ownership: <strong>{Ownership}<strong></h5>";
-    //
     parks.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
-    //END/////Downloaded from Census.gov//
   } else {
     map.removeLayer(parks)
   }
 })
-
 ///////////////////PARKS////////////////////
+
+///////////////////PARKING LOTS////////////////////
+var parkingLots = L.esri.featureLayer({
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Arlington_Parking_Lots/FeatureServer/0?token=eNY3D2aBKbf2u4E4bJgGNsceNEmVEL8f9-DXCXuK2khlkXptoYfLIb-NBZjsIkCYy2ZDfrevFi_sGs3TkASIIduYDE0xPQRMtkjuUI0OLnxzVw09b_xxFLs2yd0FCAxmM0uMkplW7Wl4hMshhuk01tBv-NB8hg1mbjlSJ3FIddZgktAH7isn8M3z5PoZsxPYlm9772bmGnb_T_wUgouBwV70yMpgbcAQxhs9wGetdzTho5AD_mNB4zw2iXcSk7S5",
+  style: function(feature) {
+      return {
+        color: 'black',
+        weight: 2
+      };
+    }
+})
+$("#parkingLots").on("click", function() {
+  if (this.checked === true) {
+    parkingLots.addTo(map);
+    var popupTemplate = "<h3> Arlington County Parking Garage </h3>";
+    parkingLots.bindPopup(function(e) {
+      return L.Util.template(popupTemplate, e.feature.properties)
+    });
+  } else {
+    map.removeLayer(parkingLots)
+  }
+})
+///////////////////PARKING LOTS////////////////////
+
+///////////////////AIRPORTS////////////////////
+var airports = L.esri.featureLayer({
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Arlington_Airport/FeatureServer/0?token=D-RVGLp719W0zbYh0nux3gAp2qy7YTe4vnC9GkoLuD0m7uq4MsnpxHUGBH9Gfx5u2FOY3biEFlCnr7TJWJbRKvMCWBFyKNen5mA-j_9ldTI2ay6c8Lg6vw7JHt9179_e4DGh2UcLOtiT0XVAF1CH7FUz3MO8h8M8e6iVtoCLXpHSHSzZE-XFsx0a4jx0xz7qEaTZ6m3ogtvaDJUNuL-e7D2l9amK-Y4ZZoSRYtS2QXIBN18S42IZrxI6oQc7S2iZ",
+  style: function(feature) {
+      return {
+        color: '#008B8B',
+        weight: 2
+      };
+    }
+})
+$("#airport").on("click", function() {
+  if (this.checked === true) {
+    airports.addTo(map);
+    var popupTemplate = "<h3> Ronald Reagan International Airport</h3>";
+    airports.bindPopup(function(e) {
+      return L.Util.template(popupTemplate, e.feature.properties)
+    });
+  } else {
+    map.removeLayer(airports)
+  }
+})
+///////////////////AIRPORTS////////////////////
+
+///////////////////SCHOOLS////////////////////
+var schoolsLevel = {
+  elementarySchool: L.ExtraMarkers.icon({
+    icon: 'fa-school',
+    markerColor: 'orange-dark',
+    shape: 'circle',
+    prefix: 'fa'
+  }),
+  middleSchool: L.ExtraMarkers.icon({
+    icon: 'fa-school',
+    markerColor: 'yellow',
+    shape: 'circle',
+    prefix: 'fa'
+  }),
+  highSchool: L.ExtraMarkers.icon({
+    icon: 'fa-school',
+    markerColor: 'cyan',
+    shape: 'circle',
+    prefix: 'fa'
+  }),
+  alternate: L.ExtraMarkers.icon({
+    icon: 'fa-school',
+    markerColor: 'pink',
+    shape: 'circle',
+    prefix: 'fa'
+  })
+};
+var schools = L.esri.featureLayer({
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Arlington_Point_Schools/FeatureServer/0?token=rPWpaOQY_xsiF440TBy4004W0CfDfBBhIyJdY1Q2viIyp0TjPMsbcWg6-zAKWX1Efbir3CAEkarmt5gmESNh9fK_p4o5f6o-V4o88t2bJ-cYUqniIEbQmNVlI8QRZL3eUmEvPApXGPNb9MIRxIB4tkp4jAwCqZ5RJ55Hu9AI_6WAfdLRND8sm_FgyT6W3Nfm1JpV9r0ix4ewxy3iqoO0XPuImyYXdntQeFLRKP6r-1CC0HM5oJJPxvlc58JK8dn2",
+  pointToLayer: function(feature, latlng) {
+    if (feature.properties.SYMBOL === 'ES') {
+      return L.marker(latlng, {
+        icon: schoolsLevel.elementarySchool
+      })
+    } else if (feature.properties.SYMBOL === 'MS') {
+      return L.marker(latlng, {
+        icon: schoolsLevel.middleSchool
+      })
+    } else if (feature.properties.SYMBOL === 'HS') {
+      return L.marker(latlng, {
+        icon: schoolsLevel.highSchool
+      })
+    } else {
+      return L.marker(latlng, {
+        icon: schoolsLevel.alternate
+      })
+    }
+  }
+})
+$("#schools").on("click", function() {
+  if (this.checked === true) {
+    schools.addTo(map);
+    var popupTemplate = "<h3>{NAME}</h3><h4>Education Level: <strong>{SYMBOL}</strong><h4><h5>Address: <strong>{ADDRESS}<strong></h5>";
+    schools.bindPopup(function(e) {
+      return L.Util.template(popupTemplate, e.feature.properties)
+    });
+  } else {
+    map.removeLayer(schools)
+  }
+})
+///////////////////SCHOOLS////////////////////
 
 // $("#cdc").on("click", function() {
 //   if (this.checked === true) {
