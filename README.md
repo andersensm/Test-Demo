@@ -1,2 +1,2 @@
 # Esri-Leaflet- Demo
-Incorporating ArcGIS Online/Server &amp; Open Source Government Data into Leaflet Rendering Interface
+Incorporating Open Source Government Data, specifically, Arlington County Virignia and Census data with ArcDesktop and displaying via the web using ArcGIS Online/Server with Rest API and rendering data using the Leaflet library
