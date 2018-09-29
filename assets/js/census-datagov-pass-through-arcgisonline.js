@@ -1,6 +1,7 @@
 var map = L.map('map').setView([38.9072, -77.0369], 10);
 L.esri.basemapLayer("Streets").addTo(map);
 
+
 var iconsHospitalRankings = {
   best: L.ExtraMarkers.icon({
     icon: 'fa-hospital-symbol',
@@ -244,6 +245,16 @@ $("#censusDataGov2").on("click", function() {
   }
 })
 
+var cdcTracks2 = L.esri.featureLayer({
+  url: "https://services3.arcgis.com/ZvidGQkLaDJxRSJ2/arcgis/rest/services/Overall_2014_Tracts/FeatureServer/1",
+  style: function(feature) {
+      return {
+        color: 'black',
+        weight: 2
+      };
+    }
+})
+
 $("#cdc").on("click", function() {
   if (this.checked === true) {
     //START/////Downloaded from ArcGIS Online Living Atlas//
@@ -257,6 +268,7 @@ $("#cdc").on("click", function() {
     map.removeLayer(cdcTracks)
   }
 })
+
 
 $("#medicareMedicaid").on("click", function() {
   if (this.checked === true) {
