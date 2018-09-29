@@ -41,11 +41,11 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="navbar-brand col-xl-2 col-lg-2 col-md-2 col-sm-12 col-xs-12" href="#">Arlington Public Schools Demo</div>
+    <div class="navbar-brand col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12" href="#">Arlington Public Schools Demo</div>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    <div class="collapse navbar-collapse col-xl-10 col-lg-10 col-md-10 col-sm-12 col-xs-12" id="navbarText">
+    <div class="collapse navbar-collapse col-xl-9 col-lg-9 col-md-9 col-sm-12 col-xs-12" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -54,37 +54,52 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="censusDataGov1" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>
               <p><strong>Census:</strong> Arlington County Census Block Groups- 2013 </p>
-              <p><strong>Location:</strong> Census.gov</p>
-              <p><strong>Format:</strong> ShapeFiles</p>
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="censusDataGov2" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>
               <p><strong>Census:</strong> Arlington County Census Block Groups- 2014 </p>
-              <p><strong>Location:</strong> Census.gov</p>
-              <p><strong>Format:</strong> ShapeFiles</p>
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="censusDataGov3" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>
               <p><strong>Census:</strong> Arlington County Census Block Groups- 2015 </p>
-              <p><strong>Location:</strong> Census.gov</p>
-              <p><strong>Format:</strong> ShapeFiles</p>
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="censusDataGov4" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>
               <p><strong>Census:</strong> Arlington County Census Block Groups- 2016 </p>
-              <p><strong>Location:</strong> Census.gov</p>
-              <p><strong>Format:</strong> ShapeFiles</p>
+            </a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Land Cover
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="parks" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>
+              <p><strong>Arlington Open Source GIS:</strong> Parks </p>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="parkingLots" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>
+              <p><strong>Arlington Open Source GIS:</strong> Parking Lots </p>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="airport" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>
+              <p><strong>Arlington Open Source GIS:</strong> Airport </p>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="schools" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>
+              <p><strong>Arlington Open Source GIS:</strong> Schools </p>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="Census.gov" data-content="Census Data in Shapefile Format from Data.Gov & Census Bureau" class="btn btn-outline-secondary" href="#"><input id="censusBlocksRemLandCover" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>
+              <p><strong>Census Block Groups:</strong> Removed Non-Population Land Cover with additional updates for Country Clubs not included</p>
             </a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="" data-content="" class="btn btn-outline-secondary" href="#"><input id="cdc" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>    CDC-Social Vulnerability Index ArcGisOnline(Feature Layer/Vector)</a>
+          <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="" data-content="" class="btn btn-outline-secondary" href="#"><input id="medicareMedicaid" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i> Census Blocks Info </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="" data-content="" class="btn btn-outline-secondary" href="#"><input id="medicareMedicaid" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>    Medicare & Medicaid Services-Hospital ArcGisOnline (Feature Layer/Vector)</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="" data-content="" class="btn btn-outline-secondary" href="#"><input id="hospitalRatingDensity" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>    Hospital Rating and Density Pattern Analysis Created with ArcGIS Online (Tile Layer/Raster)</a>
+          <a class="nav-link" data-placement="bottom" data-trigger="hover" data-toggle="popover" title="" data-content="" class="btn btn-outline-secondary" href="#"><input id="hospitalRatingDensity" type="checkbox" /><i class="fa fa-user-check red" aria-hidden="true"></i>    Age 5 to 17 Population Analysis</a>
         </li>
       </ul>
     </div>

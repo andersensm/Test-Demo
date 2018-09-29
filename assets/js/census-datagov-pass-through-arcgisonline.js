@@ -390,30 +390,36 @@ $("#censusDataGov4").on("click", function() {
   }
 })
 
-// $("#censusDataGov2").on("click", function() {
-//   if (this.checked === true) {
-//     //START/////Downloaded from Census.gov, table join with other census data to account for MEDIAN household income information//
-//     dmvTracks.addTo(map);
-//     var popupTemplate = "<h3>{NAMELSAD}<h3><h5>Median Household Income by Census Track: <strong>{B19013e1}<strong></h5>";
-//     dmvTracks.bindPopup(function(e) {
-//       return L.Util.template(popupTemplate, e.feature.properties)
-//     });
-//     //END/////Downloaded from Census.gov//
-//   } else {
-//     map.removeLayer(dmvTracks)
-//   }
-// })
-//
-// var cdcTracks2 = L.esri.featureLayer({
-//   url: "https://services3.arcgis.com/ZvidGQkLaDJxRSJ2/arcgis/rest/services/Overall_2014_Tracts/FeatureServer/1",
-//   style: function(feature) {
-//       return {
-//         color: 'black',
-//         weight: 2
-//       };
-//     }
-// })
-//
+///////////////////PARKS////////////////////
+
+var parks = L.esri.featureLayer({
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Arlington_Parks/FeatureServer/0?token=K_wX2hbQdcqeKMcLoCRLw9hw1TEx1POdF06zRsAGGChJfdCHvQXXRzjMBOodiKrLIlHHC0PbdvRgdnNTaK2zZYX1F2pStnIBRjDHzRfVXRPJ5-r6ymWaKUaU3hGBxJXKdiO2zqxfGTOV5vBiopxWF2gBOsn8x4KwnNg4Dl5VOSFfxNnPAt-EVrCUmMOe00InSJTAGtIehoMz014kfDO86kLgchb_70tcooxRVE6AzDu7mQXJbjAiK89nfOGCo6RN",
+  style: function(feature) {
+      return {
+        color: 'green',
+        weight: 2
+      };
+    }
+})
+
+$("#parks").on("click", function() {
+  if (this.checked === true) {
+    //START/////Downloaded from Census.gov, table join with other census data to account for MEAN non-family household income information//
+    parks.addTo(map);
+    //
+    var popupTemplate = "<h3>Arlington County Parks</h3><h4><strong>{ParkName}</strong><h4><h5>Ownership: <strong>{Ownership}<strong></h5>";
+    //
+    parks.bindPopup(function(e) {
+      return L.Util.template(popupTemplate, e.feature.properties)
+    });
+    //END/////Downloaded from Census.gov//
+  } else {
+    map.removeLayer(parks)
+  }
+})
+
+///////////////////PARKS////////////////////
+
 // $("#cdc").on("click", function() {
 //   if (this.checked === true) {
 //     //START/////Downloaded from ArcGIS Online Living Atlas//
