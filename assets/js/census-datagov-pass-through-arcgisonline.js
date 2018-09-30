@@ -74,7 +74,7 @@ var censusBlockGroups2013 = L.esri.featureLayer({
       };
     } else if (feature.properties.Pop_2013_5 < '1') {
       return {
-        color: 'black',
+        color: 'white',
         weight: 1
       };
     }
@@ -111,7 +111,7 @@ var censusBlockGroups2014 = L.esri.featureLayer({
       };
     } else if (feature.properties.Pop_2014_5 < '1') {
       return {
-        color: 'black',
+        color: 'white',
         weight: 1
       };
     }
@@ -148,7 +148,7 @@ var censusBlockGroups2015 = L.esri.featureLayer({
       };
     } else if (feature.properties.Pop_2015_5 < '1') {
       return {
-        color: 'black',
+        color: 'white',
         weight: 1
       };
     }
@@ -185,7 +185,7 @@ var censusBlockGroups2016 = L.esri.featureLayer({
       };
     } else if (feature.properties.Pop_2016_5 < '1') {
       return {
-        color: 'black',
+        color: 'white',
         weight: 1
       };
     }
@@ -550,7 +550,7 @@ var censusBlocksWithoutLandCover = L.esri.featureLayer({
 $("#censusBlocksRemLandCover").on("click", function() {
   if (this.checked === true) {
     censusBlocksWithoutLandCover.addTo(map);
-    var popupTemplate = "<h3>Census Block Group</h3><h4>Urban %: <strong>{URBAN}</strong><h4><h5>Average Growth Rate 2013-2016: <strong>{AvgGrowthR}<strong></h5><br><h5>Projected Growth Rate 2016-2017: <strong>{AvgGrowt_1}<strong></h5><br><h5>Projected Growth Rate 2017-2018: <strong>{AvgGrowt_2}<strong></h5><br><h5>Projected Growth Rate 2018-2019: <strong>{AvgGrowt_3}<strong></h5><br><h5>Projected Additional Kids beyond average 2016-2019: <strong>{Additional}<strong></h5>";
+    var popupTemplate = "<h3>Census Block Group</h3><h4>Urban %: <strong>{URBAN}</strong><h4><h5>Average Growth Rate 2013-2016: <strong>{AvgGrowthR}%<strong></h5><br><h5>Projected Growth Rate 2018-2019: <strong>{AvgGrowt_3}<strong></h5><br><h5>Projected Additional Kids 2016-2019: <strong>{Additional}<strong></h5>";
     censusBlocksWithoutLandCover.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
@@ -562,72 +562,72 @@ $("#censusBlocksRemLandCover").on("click", function() {
 
 ///////////////////Planning Units /w Additional Information////////////////////
 var planningUnits = L.esri.featureLayer({
-  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/PlanningUnits_Arl_Final_AvgUrban_AvgAddKids2020_Final_v2/FeatureServer/0?token=VGCnmokU9Mw1ypJZYDsdZsmA-6WchO2W67OIucBTrNAfU0brJ4O7UxFDHArX5xQq9R_vBQlHTfZBQaaZmHbL0yBvJy0NUKhb8lgwRve8F5rXmriPyYQI2lD83teS2J883KRSdFFle36zJX60q2f5NufmEg8hzDNzeq32tv4f_JXniVm2fQ7xRQKILLxGSEJ6cO_kIxuoxHHMkd-5rG94Ca_sjaAISw3im39iUuRgmkF8MyQh1PPHiANJEue-ZI1T",
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/School_Planning_Units_FINAL_COMPLETE_2030/FeatureServer/0?token=Fihmxog-57dSbO4075ZRsk8dnKwmsDJxLFqZ4qgQer6MmiVP1veCpmKUbLHD_r1bduyTYi1tKhKcc9iWvomrKbNHWO3w2n8S-9IWFhVQnAZOGf_HchMC4Dwn7VMOraozD2IT09iEj4NQRKzEBHob8hfbmiIBVupy0ltZzK6GMe_yXSV7IdxOJeS29VJQZ9Td-ejAgd24QFhb_1bCs1g8k8LlhrHCiKjFhMH379dmcRBwU3xDUFFTgh0XapUv953e",
   style: function(feature) {
-    if (feature.properties.Avg_Additi >= '139') {
+    if (feature.properties.Avg_F2030 >= '447') {
       return {
         color: '#6E2C00',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Avg_Additi < '139') & (feature.properties.Avg_Additi >= '86')) {
+    } else if ((feature.properties.Avg_F2030 < '447') & (feature.properties.Avg_F2030 >= '339')) {
       return {
         color: '#873600',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Avg_Additi < '86') & (feature.properties.Avg_Additi >= '57.7')) {
+    } else if ((feature.properties.Avg_F2030 < '339') & (feature.properties.Avg_F2030 >= '284')) {
       return {
         color: '#A04000',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Avg_Additi < '57.7') & (feature.properties.Avg_Additi >= '37.8')) {
+    } else if ((feature.properties.Avg_F2030 < '284') & (feature.properties.Avg_F2030 >= '234')) {
       return {
         color: '#BA4A00',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Avg_Additi < '37.8') & (feature.properties.Avg_Additi >= '23')) {
+    } else if ((feature.properties.Avg_F2030 < '234') & (feature.properties.Avg_F2030 >= '188')) {
       return {
         color: '#D35400',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Avg_Additi < '23') & (feature.properties.Avg_Additi >= '11.6')) {
+    } else if ((feature.properties.Avg_F2030 < '188') & (feature.properties.Avg_F2030 >= '141')) {
       return {
         color: '#DC7633',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    }  else if ((feature.properties.Avg_Additi < '11.6') & (feature.properties.Avg_Additi >= '2')) {
+    }  else if ((feature.properties.Avg_F2030 < '141') & (feature.properties.Avg_F2030 >= '97')) {
       return {
         color: '#E59866',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    }  else if ((feature.properties.Avg_Additi < '2') & (feature.properties.Avg_Additi >= '-7.6')) {
+    }  else if ((feature.properties.Avg_F2030 < '97') & (feature.properties.Avg_F2030 >= '51')) {
       return {
         color: '#EDBB99',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    }   else if ((feature.properties.Avg_Additi < '-7.6') & (feature.properties.Avg_Additi >= '-25')) {
+    }   else if ((feature.properties.Avg_F2030 < '51') & (feature.properties.Avg_F2030 >= '-179')) {
       return {
         color: '#F6DDCC',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    }   else if ((feature.properties.Avg_Additi < '-25') & (feature.properties.Avg_Additi >= '-46')) {
+    }   else if ((feature.properties.Avg_F2030 < '-179') & (feature.properties.Avg_F2030 >= '-267')) {
       return {
         color: '#FBEEE6',
         weight: 2,
@@ -640,7 +640,7 @@ var planningUnits = L.esri.featureLayer({
 $("#arlPlanningUnitsWithInformation").on("click", function() {
   if (this.checked === true) {
     planningUnits.addTo(map);
-    var popupTemplate = "<h3>Arlington Planning Unit: <strong>{PU}</strong></h3><h4>Average Urban %: <strong>{Avg_Urban_}</strong><h4><h5>Age 5-17 Projected Additional kids per Planning Unit from 2016-2019: <strong>{Avg_Additi}<strong></h5>";
+    var popupTemplate = "<h3>Arlington Planning Unit: <strong>{PU}</strong></h3><h4>Average Urban %: <strong>{Avg_Urban_}</strong><h4><h5>Age 5-17 Projected Additional kids per Planning Unit from 2016-2030: <strong>{Avg_F2030}<strong></h5>";
     planningUnits.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
