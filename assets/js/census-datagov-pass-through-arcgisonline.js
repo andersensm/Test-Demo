@@ -1,5 +1,5 @@
 var map = L.map('map').setView([38.9072, -77.0369], 10);
-L.esri.basemapLayer("Streets").addTo(map);
+L.esri.basemapLayer("DarkGray").addTo(map);
 
 //
 
@@ -339,7 +339,9 @@ var parks = L.esri.featureLayer({
   style: function(feature) {
       return {
         color: 'green',
-        weight: 2
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 1
       };
     }
 })
@@ -362,7 +364,9 @@ var parkingLots = L.esri.featureLayer({
   style: function(feature) {
       return {
         color: 'black',
-        weight: 2
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 1
       };
     }
 })
@@ -384,8 +388,10 @@ var airports = L.esri.featureLayer({
   url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Arlington_Airport/FeatureServer/0?token=D-RVGLp719W0zbYh0nux3gAp2qy7YTe4vnC9GkoLuD0m7uq4MsnpxHUGBH9Gfx5u2FOY3biEFlCnr7TJWJbRKvMCWBFyKNen5mA-j_9ldTI2ay6c8Lg6vw7JHt9179_e4DGh2UcLOtiT0XVAF1CH7FUz3MO8h8M8e6iVtoCLXpHSHSzZE-XFsx0a4jx0xz7qEaTZ6m3ogtvaDJUNuL-e7D2l9amK-Y4ZZoSRYtS2QXIBN18S42IZrxI6oQc7S2iZ",
   style: function(feature) {
       return {
-        color: '#008B8B',
-        weight: 2
+        color: '#FF6347',
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 1
       };
     }
 })
@@ -463,6 +469,194 @@ $("#schools").on("click", function() {
   }
 })
 ///////////////////SCHOOLS////////////////////
+
+///////////////////Census Block Groups /w Additional Information////////////////////
+var censusBlocksWithoutLandCover = L.esri.featureLayer({
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/BlockGroup_Arl_with_GrowthRate_AddKids_Final/FeatureServer/0?token=udKVIUTaCTZFt5huHsuAOXfduCWLq8D_hD6YWS8tyWgDBTOl97pvhUN1CreoRX0vkVMgGhva7B77h_q6lBxZQlmKZgUzDYHVj0dVgqp3Iw7lyeUfvMUel1k3aagdHVyTlPnjF_ileSH0_nCfDrn0zW_w7PvzATvatWP1da7QBzT8HbgXgTvoG9DXHe7-wjUH677KX0Dg1ggV_asXzXVBmgmRxakbHuCJltWPePAb1N8N3OTskydaSjepChRd8yTH",
+  style: function(feature) {
+    if (feature.properties.Additional >= '243') {
+      return {
+        color: '#154360',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Additional < '243') & (feature.properties.Additional >= '151')) {
+      return {
+        color: '#1A5276',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Additional < '151') & (feature.properties.Additional >= '86')) {
+      return {
+        color: '#1F618D',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Additional < '86') & (feature.properties.Additional >= '43')) {
+      return {
+        color: '#2471A3',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Additional < '43') & (feature.properties.Additional >= '13.6')) {
+      return {
+        color: '#2980B9',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Additional < '13.6') & (feature.properties.Additional >= '-1')) {
+      return {
+        color: '#5499C7',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    }  else if ((feature.properties.Additional < '-1') & (feature.properties.Additional >= '-9')) {
+      return {
+        color: '#7FB3D5',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    }  else if ((feature.properties.Additional < '-9') & (feature.properties.Additional >= '-20')) {
+      return {
+        color: '#A9CCE3',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    }   else if ((feature.properties.Additional < '-20') & (feature.properties.Additional >= '-35.4')) {
+      return {
+        color: '#D4E6F1',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    }   else if ((feature.properties.Additional < '-35.4') & (feature.properties.Additional >= '-46')) {
+      return {
+        color: '#EAF2F8',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    }
+  }
+})
+$("#censusBlocksRemLandCover").on("click", function() {
+  if (this.checked === true) {
+    censusBlocksWithoutLandCover.addTo(map);
+    var popupTemplate = "<h3>Census Block Group</h3><h4>Urban %: <strong>{URBAN}</strong><h4><h5>Average Growth Rate 2013-2016: <strong>{AvgGrowthR}<strong></h5><br><h5>Projected Growth Rate 2016-2017: <strong>{AvgGrowt_1}<strong></h5><br><h5>Projected Growth Rate 2017-2018: <strong>{AvgGrowt_2}<strong></h5><br><h5>Projected Growth Rate 2018-2019: <strong>{AvgGrowt_3}<strong></h5><br><h5>Projected Additional Kids beyond average 2016-2019: <strong>{Additional}<strong></h5>";
+    censusBlocksWithoutLandCover.bindPopup(function(e) {
+      return L.Util.template(popupTemplate, e.feature.properties)
+    });
+  } else {
+    map.removeLayer(censusBlocksWithoutLandCover)
+  }
+})
+///////////////////Census Block Groups /w Additional Information////////////////////
+
+///////////////////Planning Units /w Additional Information////////////////////
+var planningUnits = L.esri.featureLayer({
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/PlanningUnits_Arl_Final_AvgUrban_AvgAddKids2020_Final_v2/FeatureServer/0?token=VGCnmokU9Mw1ypJZYDsdZsmA-6WchO2W67OIucBTrNAfU0brJ4O7UxFDHArX5xQq9R_vBQlHTfZBQaaZmHbL0yBvJy0NUKhb8lgwRve8F5rXmriPyYQI2lD83teS2J883KRSdFFle36zJX60q2f5NufmEg8hzDNzeq32tv4f_JXniVm2fQ7xRQKILLxGSEJ6cO_kIxuoxHHMkd-5rG94Ca_sjaAISw3im39iUuRgmkF8MyQh1PPHiANJEue-ZI1T",
+  style: function(feature) {
+    if (feature.properties.Avg_Additi >= '139') {
+      return {
+        color: '#6E2C00',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Avg_Additi < '139') & (feature.properties.Avg_Additi >= '86')) {
+      return {
+        color: '#873600',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Avg_Additi < '86') & (feature.properties.Avg_Additi >= '57.7')) {
+      return {
+        color: '#A04000',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Avg_Additi < '57.7') & (feature.properties.Avg_Additi >= '37.8')) {
+      return {
+        color: '#BA4A00',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Avg_Additi < '37.8') & (feature.properties.Avg_Additi >= '23')) {
+      return {
+        color: '#D35400',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Avg_Additi < '23') & (feature.properties.Avg_Additi >= '11.6')) {
+      return {
+        color: '#DC7633',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    }  else if ((feature.properties.Avg_Additi < '11.6') & (feature.properties.Avg_Additi >= '2')) {
+      return {
+        color: '#E59866',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    }  else if ((feature.properties.Avg_Additi < '2') & (feature.properties.Avg_Additi >= '-7.6')) {
+      return {
+        color: '#EDBB99',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    }   else if ((feature.properties.Avg_Additi < '-7.6') & (feature.properties.Avg_Additi >= '-25')) {
+      return {
+        color: '#F6DDCC',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    }   else if ((feature.properties.Avg_Additi < '-25') & (feature.properties.Avg_Additi >= '-46')) {
+      return {
+        color: '#FBEEE6',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    }
+  }
+})
+$("#arlPlanningUnitsWithInformation").on("click", function() {
+  if (this.checked === true) {
+    planningUnits.addTo(map);
+    var popupTemplate = "<h3>Arlington Planning Unit: <strong>{PU}</strong></h3><h4>Average Urban %: <strong>{Avg_Urban_}</strong><h4><h5>Age 5-17 Projected Additional kids per Planning Unit from 2016-2019: <strong>{Avg_Additi}<strong></h5>";
+    planningUnits.bindPopup(function(e) {
+      return L.Util.template(popupTemplate, e.feature.properties)
+    });
+  } else {
+    map.removeLayer(planningUnits)
+  }
+})
+///////////////////Planning Units /w Additional Information////////////////////
+
+
+
+
+
+
+
+
 
 // $("#cdc").on("click", function() {
 //   if (this.checked === true) {
