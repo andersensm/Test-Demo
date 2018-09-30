@@ -1,47 +1,6 @@
 var map = L.map('map').setView([38.8816, -77.0910], 12);
 L.esri.basemapLayer("DarkGray").addTo(map);
 
-//
-
-//
-// var iconsMedicareSpending = {
-//   best: L.ExtraMarkers.icon({
-//     icon: 'fa-usd-circle',
-//     markerColor: 'green-dark',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   }),
-//   secondBest: L.ExtraMarkers.icon({
-//     icon: 'fa-usd-circle',
-//     markerColor: 'green-light',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   }),
-//   mediocre: L.ExtraMarkers.icon({
-//     icon: 'fa-usd-circle',
-//     markerColor: 'yellow',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   }),
-//   secondWorste: L.ExtraMarkers.icon({
-//     icon: 'fa-usd-circle',
-//     markerColor: 'orange',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   }),
-//   worste: L.ExtraMarkers.icon({
-//     icon: 'fa-usd-circle',
-//     markerColor: 'red',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   }),
-//   notAvailable: L.ExtraMarkers.icon({
-//     icon: 'fa-usd-circle',
-//     markerColor: 'black',
-//     shape: 'circle',
-//     prefix: 'fa'
-//   })
-// };
 
 
 var censusBlockGroups2013 = L.esri.featureLayer({
@@ -191,82 +150,6 @@ var censusBlockGroups2016 = L.esri.featureLayer({
     }
   }
 })
-
-// var dmvTracks = L.esri.featureLayer({
-//   url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/CensusTracks_Median_Household_Income_MD_VA_DC/FeatureServer/0?token=fUWvAEryKlQCZfJAXu3WvkdI8UI3AI7oYJP32IZZHvVLDrTrG5pt-egYMvc0nj3ocJnvE7-nS8Qr9UILfrx50iPrYqg-8d0B2qcSyzBdSotHW5VH-OQclub6QPSvZBYtE-LNYUwuKAxF3B6jrNSUjNpxZXZy-GuIZWHE0rm-RbA80cYUwrAALUNp9eDZwAXYehx2QF3n6c6DkvAh2NtcuUc8V3V2JjSjPgV_z4qxUgDcc3ZAxZTkcTIlLrU7hlFA",
-//   style: function(feature) {
-//     if (feature.properties.B19013e1 >= '100000') {
-//       return {
-//         color: '#006400',
-//         weight: 2
-//       };
-//     } else if ((feature.properties.B19013e1 < '100000') & (feature.properties.B19013e1 >= '90000')) {
-//       return {
-//         color: '#32CD32',
-//         weight: 2
-//       };
-//     } else if ((feature.properties.B19013e1 < '90000') & (feature.properties.B19013e1 >= '80000')) {
-//       return {
-//         color: 'yellow',
-//         weight: 2
-//       };
-//     } else if ((feature.properties.B19013e1 < '80000') & (feature.properties.B19013e1 >= '70000')) {
-//       return {
-//         color: '#FF4500',
-//         weight: 1
-//       };
-//     } else if ((feature.properties.B19013e1 < '70000') & (feature.properties.B19013e1 >= '40000')) {
-//       return {
-//         color: 'red',
-//         weight: 1
-//       };
-//     } else if (feature.properties.B19013e1 < '70000') {
-//       return {
-//         color: '#8B0000',
-//         weight: 1
-//       };
-//     }
-//   }
-// })
-
-// var cdcTracks = L.esri.featureLayer({
-//   url: "https://services3.arcgis.com/ZvidGQkLaDJxRSJ2/arcgis/rest/services/Overall_2014_Tracts/FeatureServer/1",
-//   style: function(feature) {
-//     if (feature.properties.RPL_THEMES >= '0.80') {
-//       return {
-//         color: '#8B0000',
-//         weight: 2
-//       };
-//     } else if ((feature.properties.RPL_THEMES < '0.80') & (feature.properties.RPL_THEMES >= '0.60')) {
-//       return {
-//         color: 'orange',
-//         weight: 2
-//       };
-//     } else if ((feature.properties.RPL_THEMES < '0.60') & (feature.properties.RPL_THEMES >= '0.40')) {
-//       return {
-//         color: 'yellow',
-//         weight: 2
-//       };
-//     } else if ((feature.properties.RPL_THEMES < '0.40') & (feature.properties.RPL_THEMES >= '0.20')) {
-//       return {
-//         color: '#32CD32',
-//         weight: 1
-//       };
-//     } else {
-//       return {
-//         color: '#006400',
-//         weight: 2
-//       };
-//     }
-//   }
-// })
-//
-
-//
-// var hospitalRatingDensity = L.esri.tiledMapLayer({
-//   url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Hospital_Information_Num_Rating_Density4/MapServer?token=MXl6qC994rUpFrWBmu_FVAehZPSfHo7dF2Dzv_FFhX4cXCKQGjN4O5gl020kB0x6si8Sf5dApD_Mj7q0vqEyazvfwQHCIxS0Nusw5Wmll6G0c8qnO1-N_DvAksuTgT0GFwPGByPT6t4QvLWB8uLW147iY1qPLh6VDF-QbE_zCcdHCF29OxgFGp6tXd2DRv7_MWddijNmIIhpYmzHCIxIG8dMxdwDne3kmwg3pMwYBPPdh7txEWeJ0w_2XmJT5MCX"
-// })
-
 
 
 $("#censusDataGov1").on("click", function() {
@@ -550,7 +433,7 @@ var censusBlocksWithoutLandCover = L.esri.featureLayer({
 $("#censusBlocksRemLandCover").on("click", function() {
   if (this.checked === true) {
     censusBlocksWithoutLandCover.addTo(map);
-    var popupTemplate = "<h3>Census Block Group</h3><h4>Urban %: <strong>{URBAN}</strong><h4><h5>Average Growth Rate 2013-2016: <strong>{AvgGrowthR}%<strong></h5><br><h5>Projected Growth Rate 2018-2019: <strong>{AvgGrowt_3}<strong></h5><br><h5>Projected Additional Kids 2016-2019: <strong>{Additional}<strong></h5>";
+    var popupTemplate = "<h3>Census Block Group</h3><h4>Urban %: <strong>{URBAN}</strong><h4><h5>Average Growth Rate 2013-2016: <strong>{AvgGrowthR}%<strong></h5><br><h5>Projected Growth Rate 2018-2019: <strong>{AvgGrowt_3}<strong></h5><br><h5>Projected Additional/Reduction Age 5-17 2016-2019: <strong>{Additional}<strong></h5>";
     censusBlocksWithoutLandCover.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
@@ -560,76 +443,94 @@ $("#censusBlocksRemLandCover").on("click", function() {
 })
 ///////////////////Census Block Groups /w Additional Information////////////////////
 
-///////////////////Planning Units /w Additional Information////////////////////
+///////////////////Planning Units 2030 /w Additional Information////////////////////
 var planningUnits = L.esri.featureLayer({
-  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/School_Planning_Units_FINAL_COMPLETE_2030/FeatureServer/0?token=Fihmxog-57dSbO4075ZRsk8dnKwmsDJxLFqZ4qgQer6MmiVP1veCpmKUbLHD_r1bduyTYi1tKhKcc9iWvomrKbNHWO3w2n8S-9IWFhVQnAZOGf_HchMC4Dwn7VMOraozD2IT09iEj4NQRKzEBHob8hfbmiIBVupy0ltZzK6GMe_yXSV7IdxOJeS29VJQZ9Td-ejAgd24QFhb_1bCs1g8k8LlhrHCiKjFhMH379dmcRBwU3xDUFFTgh0XapUv953e",
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/School_Planning_Units_FINAL_COMPLETE_2030_v2/FeatureServer/0?token=vBWsbOy8XMDDnD3cft0M6GqbTZv8QvSxhMGw0t198BHhzQmXy0l8d_CreoLSnVUY6NNVfsIrqCzWBNpk9bD5HmLJ2be_d2jk-GnEXuA4QKav71xnHkKn2XfNafiSkuPBh-4StVcytHQyblsqR8yw3NB2XRlZyPwndJHZlUTRXBzlo3pOura0p3FcD8Eewl2Wm7lVARQNEAwFWyQv-s5D0BpmEbbWYrYrYwb6t818t2Z2b1e7FL9xgf9CjNwwNDuF",
   style: function(feature) {
-    if (feature.properties.Avg_F2030 >= '447') {
+    if (feature.properties.Avg_Add203 > '219') {
       return {
-        color: '#6E2C00',
+        color: 'black',
+        fillColor: '#6E2C00',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.8
+      };
+    } else if ((feature.properties.Avg_Add203 < '219') & (feature.properties.Avg_Add203 >= '108')) {
+      return {
+        color: 'black',
+        fillColor: '#873600',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Avg_F2030 < '447') & (feature.properties.Avg_F2030 >= '339')) {
+    } else if ((feature.properties.Avg_Add203 < '108') & (feature.properties.Avg_Add203 >= '41')) {
       return {
-        color: '#873600',
+        color: 'black',
+        fillColor: '#A04000',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Avg_F2030 < '339') & (feature.properties.Avg_F2030 >= '284')) {
+    } else if ((feature.properties.Avg_Add203 < '41') & (feature.properties.Avg_Add203 >= '9.6')) {
       return {
-        color: '#A04000',
+        color: 'black',
+        fillColor: '#BA4A00',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Avg_F2030 < '284') & (feature.properties.Avg_F2030 >= '234')) {
+    } else if ((feature.properties.Avg_Add203 < '9.6') & (feature.properties.Avg_Add203 > '0')) {
       return {
-        color: '#BA4A00',
+        color: 'black',
+        fillColor: '#D35400',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Avg_F2030 < '234') & (feature.properties.Avg_F2030 >= '188')) {
+    } else if ((feature.properties.Avg_Add203 < '0') & (feature.properties.Avg_Add203 >= '-29.4')) {
       return {
-        color: '#D35400',
+        color: 'black',
+        fillColor: '#DC7633',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Avg_F2030 < '188') & (feature.properties.Avg_F2030 >= '141')) {
+    }  else if ((feature.properties.Avg_Add203 < '-29.4') & (feature.properties.Avg_Add203 >= '-61')) {
       return {
-        color: '#DC7633',
+        color: 'black',
+        fillColor: '#E59866',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    }  else if ((feature.properties.Avg_F2030 < '141') & (feature.properties.Avg_F2030 >= '97')) {
+    }  else if ((feature.properties.Avg_Add203 < '-61') & (feature.properties.Avg_Add203 >= '-125')) {
       return {
-        color: '#E59866',
+        color: 'black',
+        fillColor: '#EDBB99',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    }  else if ((feature.properties.Avg_F2030 < '97') & (feature.properties.Avg_F2030 >= '51')) {
+    }   else if ((feature.properties.Avg_Add203 < '-125') & (feature.properties.Avg_Add203 >= '-413')) {
       return {
-        color: '#EDBB99',
+        color: 'black',
+        fillColor: '#F6DDCC',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    }   else if ((feature.properties.Avg_F2030 < '51') & (feature.properties.Avg_F2030 >= '-179')) {
+    }   else if ((feature.properties.Avg_Add203 < '-413') & (feature.properties.Avg_Add203 >= '-560')) {
       return {
-        color: '#F6DDCC',
+        color: 'black',
+        fillColor: '#FBEEE6',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
       };
-    }   else if ((feature.properties.Avg_F2030 < '-179') & (feature.properties.Avg_F2030 >= '-267')) {
+    } else {
       return {
-        color: '#FBEEE6',
+        color: 'black',
+        fillColor: 'black',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
@@ -640,7 +541,7 @@ var planningUnits = L.esri.featureLayer({
 $("#arlPlanningUnitsWithInformation").on("click", function() {
   if (this.checked === true) {
     planningUnits.addTo(map);
-    var popupTemplate = "<h3>Arlington Planning Unit: <strong>{PU}</strong></h3><h4>Average Urban %: <strong>{Avg_Urban_}</strong><h4><h5>Age 5-17 Projected Additional kids per Planning Unit from 2016-2030: <strong>{Avg_F2030}<strong></h5>";
+    var popupTemplate = "<h3>Arlington Planning Unit: <strong>{PU}</strong></h3><h4>Average Urban %: <strong>{Avg_Urban_}</strong><h4><h5>Projected Additional Age 5-17 per Planning Unit from 2016-2030: <strong>{Avg_Add203}<strong></h5>";
     planningUnits.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
@@ -648,47 +549,121 @@ $("#arlPlanningUnitsWithInformation").on("click", function() {
     map.removeLayer(planningUnits)
   }
 })
-///////////////////Planning Units /w Additional Information////////////////////
+///////////////////Planning Units 2030 /w Additional Information////////////////////
 
+///////////////////2030 Hot Spot Analysis////////////////////
+var hotSpot = L.esri.featureLayer({
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Hot_Spots_Avg_F2030/FeatureServer/0?token=AncsE3VgSKhkm5b2s8qDpbre7sKXZ5SKyXKAxz5rHzYXll3DQF7UaD3FeV9qKHc7JBsKJiaLIbk578LgdwzywrepbJznzeNKedWHR3w-4IoGRUGQGHQtIRVvlG65JoAw0AsFHGgbu9ui0ZzbDMvYHhHHmJKrIED7Jc0i4iiavmCd-nzHn6LaBznOu4dMTtvkoKIPht36I1DkoVZRrcUAhUn8C7jtsZPw-2fFj68r3q85ge19GVKPShuXT0ua7qMR",
+  style: function(feature) {
+    if (feature.properties.Gi_Text === 'Hot Spot with 95% Confidence') {
+      return {
+        color: '#A93226',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    } else if (feature.properties.Gi_Text === 'Cold Spot with 95% Confidence') {
+      return {
+        color: '#2471A3',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    } else if (feature.properties.Gi_Text === 'Hot Spot with 99% Confidence') {
+      return {
+        color: '#641E16',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    } else if (feature.properties.Gi_Text === 'Cold Spot with 99% Confidence') {
+      return {
+        color: '#154360',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    } else if (feature.properties.Gi_Text === 'Cold Spot with 90% Confidence') {
+      return {
+        color: '#7FB3D5',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    } else if (feature.properties.Gi_Text === 'Hot Spot with 90% Confidence') {
+      return {
+        color: '#D98880',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    } else if (feature.properties.Gi_Text === 'Not Significant') {
+      return {
+        color: '#D0D3D4',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    }
+  }
+})
+$("#hotSpot").on("click", function() {
+  if (this.checked === true) {
+    hotSpot.addTo(map);
+    var popupTemplate = "<h5> {Gi_Text}</h5>";
+    hotSpot.bindPopup(function(e) {
+      return L.Util.template(popupTemplate, e.feature.properties)
+    });
+  } else {
+    map.removeLayer(hotSpot)
+  }
+})
+///////////////////2030 Hot Spot Analysis////////////////////
 
-
-
-
-
-
-
-
-// $("#cdc").on("click", function() {
-//   if (this.checked === true) {
-//     //START/////Downloaded from ArcGIS Online Living Atlas//
-//     cdcTracks.addTo(map);
-//     var popupTemplate = "<h3>{LOCATION}</h3><br><h4>Socio Economic Vulnerability Index-CDC</h4><br><h5>Vulnerability Rating(1-High, 0-Low): <strong>{RPL_THEMES}<strong></h5>";
-//     cdcTracks.bindPopup(function(e) {
-//       return L.Util.template(popupTemplate, e.feature.properties)
-//     });
-//     //END/////Downloaded from ArcGIS Online Living Atlas//
-//   } else {
-//     map.removeLayer(cdcTracks)
-//   }
-// })
-//
-//
-// $("#medicareMedicaid").on("click", function() {
-//   if (this.checked === true) {
-//     hospitalRatings.addTo(map);
-//     var popupTemplate = "<h3>{Hospital_Name}</h3><br><h4>Medicare & Medicaid Certified Hospital Ratings</h4><br><h5>Hospital Rating(5-Best, 1-Worste): <strong>{Hospital_overall_rating}<strong></h5>";
-//     hospitalRatings.bindPopup(function(e) {
-//       return L.Util.template(popupTemplate, e.feature.properties)
-//     });
-//   } else {
-//     map.removeLayer(hospitalRatings)
-//   }
-// })
-//
-// $("#hospitalRatingDensity").on("click", function() {
-//   if (this.checked === true) {
-//     hospitalRatingDensity.addTo(map);
-//   } else {
-//     map.removeLayer(hospitalRatingDensity)
-//   }
-// })
+///////////////////2030 Outliers Analysis////////////////////
+var outLiers = L.esri.featureLayer({
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Hot_Spots_Avg_F2030/FeatureServer/0?token=AncsE3VgSKhkm5b2s8qDpbre7sKXZ5SKyXKAxz5rHzYXll3DQF7UaD3FeV9qKHc7JBsKJiaLIbk578LgdwzywrepbJznzeNKedWHR3w-4IoGRUGQGHQtIRVvlG65JoAw0AsFHGgbu9ui0ZzbDMvYHhHHmJKrIED7Jc0i4iiavmCd-nzHn6LaBznOu4dMTtvkoKIPht36I1DkoVZRrcUAhUn8C7jtsZPw-2fFj68r3q85ge19GVKPShuXT0ua7qMR",
+  style: function(feature) {
+    if (feature.properties.Li_Text === 'Low-High outlier') {
+      return {
+        color: '#154360',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    } else if (feature.properties.Li_Text === 'Low-Low cluster') {
+      return {
+        color: '#7FB3D5',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    } else if (feature.properties.Li_Text === 'High-High cluster') {
+      return {
+        color: '#D98880',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    } else if (feature.properties.Li_Text === 'Not Significant') {
+      return {
+        color: '#D0D3D4',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.7
+      };
+    }
+  }
+})
+$("#outLiers").on("click", function() {
+  if (this.checked === true) {
+    outLiers.addTo(map);
+    var popupTemplate = "<h5> {Li_Text}</h5>";
+    outLiers.bindPopup(function(e) {
+      return L.Util.template(popupTemplate, e.feature.properties)
+    });
+  } else {
+    map.removeLayer(outLiers)
+  }
+})
+///////////////////2030 Outliers Analysis////////////////////
