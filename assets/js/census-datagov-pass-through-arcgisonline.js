@@ -541,7 +541,7 @@ var planningUnits = L.esri.featureLayer({
 $("#arlPlanningUnitsWithInformation").on("click", function() {
   if (this.checked === true) {
     planningUnits.addTo(map);
-    var popupTemplate = "<h3>Arlington Planning Unit: <strong>{PU}</strong></h3><h4>Average Urban %: <strong>{Avg_Urban_}</strong><h4><h5>Projected Additional Age 5-17 per Planning Unit from 2016-2030: <strong>{Avg_Add203}<strong></h5>";
+    var popupTemplate = "<h3>Arlington Planning Unit: <strong>{PU}</strong></h3><h4>Average Urban %: <strong>{Avg_Urban_}</strong><h4><h5>Average Projected Additional Age 5-17 per Planning Unit from 2016-2030: <strong>{Avg_Add203}<strong></h5>";
     planningUnits.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
@@ -553,58 +553,74 @@ $("#arlPlanningUnitsWithInformation").on("click", function() {
 
 ///////////////////2030 Hot Spot Analysis////////////////////
 var hotSpot = L.esri.featureLayer({
-  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Hot_Spots_Avg_F2030/FeatureServer/0?token=AncsE3VgSKhkm5b2s8qDpbre7sKXZ5SKyXKAxz5rHzYXll3DQF7UaD3FeV9qKHc7JBsKJiaLIbk578LgdwzywrepbJznzeNKedWHR3w-4IoGRUGQGHQtIRVvlG65JoAw0AsFHGgbu9ui0ZzbDMvYHhHHmJKrIED7Jc0i4iiavmCd-nzHn6LaBznOu4dMTtvkoKIPht36I1DkoVZRrcUAhUn8C7jtsZPw-2fFj68r3q85ge19GVKPShuXT0ua7qMR",
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Hot_Spots_Avg_Add203_v3/FeatureServer/0?token=QWzty1OLHPSyLTjAwSecolFsjMNbWxWnExXOMX1rLwxFGZYHhWnzPi0I2A136hRi1vEIoQySSGooQ9MuOocOcssomiZLIjDpfn1SNSQDoCa2O0p-2O3veWqUqtBMbXuYfHMk6jrACsTgPV4eWZLksvAGy2xL7V8P3DO2vZicYcZ7az8jG3G-yRFgWaEc7pOeTIemAOPYwwo7vrBZpe1xUg9Z4mLthG7P4VPSe1RxWSFROvaDMndvODSDCMK0CNMk",
   style: function(feature) {
     if (feature.properties.Gi_Text === 'Hot Spot with 95% Confidence') {
       return {
-        color: '#A93226',
+        color: 'black',
+        fillColor: '#A93226',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
       };
     } else if (feature.properties.Gi_Text === 'Cold Spot with 95% Confidence') {
       return {
-        color: '#2471A3',
+        color: 'black',
+        fillColor: '#2471A3',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
       };
     } else if (feature.properties.Gi_Text === 'Hot Spot with 99% Confidence') {
       return {
-        color: '#641E16',
+        color: 'black',
+        fillColor: '#641E16',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
       };
     } else if (feature.properties.Gi_Text === 'Cold Spot with 99% Confidence') {
       return {
-        color: '#154360',
+        color: 'black',
+        fillColor: '#154360',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
       };
     } else if (feature.properties.Gi_Text === 'Cold Spot with 90% Confidence') {
       return {
-        color: '#7FB3D5',
+        color: 'black',
+        fillColor: '#7FB3D5',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
       };
     } else if (feature.properties.Gi_Text === 'Hot Spot with 90% Confidence') {
       return {
-        color: '#D98880',
+        color: 'black',
+        fillColor: '#D98880',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
       };
     } else if (feature.properties.Gi_Text === 'Not Significant') {
       return {
-        color: '#D0D3D4',
+        color: 'black',
+        fillColor: '#D0D3D4',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
       };
     }
+    else {
+     return {
+       color: 'black',
+       fillColor: '#D0D3D4',
+       weight: 2,
+       opacity: 1,
+       fillOpacity: 0.7
+     };
+   }
   }
 })
 $("#hotSpot").on("click", function() {
@@ -622,32 +638,36 @@ $("#hotSpot").on("click", function() {
 
 ///////////////////2030 Outliers Analysis////////////////////
 var outLiers = L.esri.featureLayer({
-  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Hot_Spots_Avg_F2030/FeatureServer/0?token=AncsE3VgSKhkm5b2s8qDpbre7sKXZ5SKyXKAxz5rHzYXll3DQF7UaD3FeV9qKHc7JBsKJiaLIbk578LgdwzywrepbJznzeNKedWHR3w-4IoGRUGQGHQtIRVvlG65JoAw0AsFHGgbu9ui0ZzbDMvYHhHHmJKrIED7Jc0i4iiavmCd-nzHn6LaBznOu4dMTtvkoKIPht36I1DkoVZRrcUAhUn8C7jtsZPw-2fFj68r3q85ge19GVKPShuXT0ua7qMR",
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/Find_Outliers_Avg_Add203/FeatureServer/0?token=FTpNfcnhtaVvTEL_ozBuqBBm2_dIi9QI2ALJCc0_HJkfLpMjPnPHN8QBjBjooTZWKDH3OCHxKj6WzaWGK-8HVFDFs7mKWCeEdkKPeBXs7aGOUz-rHc6xxYCKVfYOYzdtKPR8GQEHAT0-vBb6cBva4pi6Vylo0FIgRN-NOtWkBb6mfMBKdggc6E0WXgDReY6Vz05xzXYtXz6b793d1xXSaPfrZnYBuadd2x9QuDapZJ6y17KE5VtI7iYSgWol-9it",
   style: function(feature) {
     if (feature.properties.Li_Text === 'Low-High outlier') {
       return {
-        color: '#154360',
+        color: 'black',
+        fillColor: '#154360',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
       };
     } else if (feature.properties.Li_Text === 'Low-Low cluster') {
       return {
-        color: '#7FB3D5',
+        color: 'black',
+        fillColor: '#7FB3D5',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
       };
     } else if (feature.properties.Li_Text === 'High-High cluster') {
       return {
-        color: '#D98880',
+        color: 'black',
+        fillColor: '#D98880',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
       };
-    } else if (feature.properties.Li_Text === 'Not Significant') {
+    } else if (feature.properties.Li_Text === 'Not significant') {
       return {
-        color: '#D0D3D4',
+        color: 'black',
+        fillColor: 'white',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.7
