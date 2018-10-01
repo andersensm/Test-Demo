@@ -256,7 +256,7 @@ var parkingLots = L.esri.featureLayer({
 $("#parkingLots").on("click", function() {
   if (this.checked === true) {
     parkingLots.addTo(map);
-    var popupTemplate = "<h3> Arlington County Parking Garage </h3>";
+    var popupTemplate = "<h5> Arlington County Parking Lot </h5>";
     parkingLots.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
@@ -281,7 +281,7 @@ var airports = L.esri.featureLayer({
 $("#airport").on("click", function() {
   if (this.checked === true) {
     airports.addTo(map);
-    var popupTemplate = "<h3> Ronald Reagan International Airport</h3>";
+    var popupTemplate = "<h5> Ronald Reagan International Airport</h5>";
     airports.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
@@ -433,7 +433,7 @@ var censusBlocksWithoutLandCover = L.esri.featureLayer({
 $("#censusBlocksRemLandCover").on("click", function() {
   if (this.checked === true) {
     censusBlocksWithoutLandCover.addTo(map);
-    var popupTemplate = "<h3>Census Block Group</h3><h4>Urban %: <strong>{URBAN}</strong><h4><h5>Average Growth Rate 2013-2016: <strong>{AvgGrowthR}%<strong></h5><br><h5>Projected Growth Rate 2018-2019: <strong>{AvgGrowt_3}<strong></h5><br><h5>Projected Additional/Reduction Age 5-17 2016-2019: <strong>{Additional}<strong></h5>";
+    var popupTemplate = "<h3>Census Block Group</h3><h4>Urban %: <strong>{URBAN}</strong><h4><h5>Average Growth Rate 2013-2016: <strong>{AvgGrowthR}%<strong></h5><br><h5>Projected Additional/Reduction Age 5-17 2016-2019: <strong>{Additional}<strong></h5>";
     censusBlocksWithoutLandCover.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
