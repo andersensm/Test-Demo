@@ -355,75 +355,53 @@ $("#schools").on("click", function() {
 
 ///////////////////Census Block Groups /w Additional Information////////////////////
 var censusBlocksWithoutLandCover = L.esri.featureLayer({
-  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/BlockGroup_Arl_with_GrowthRate_AddKids_Final/FeatureServer/0?token=udKVIUTaCTZFt5huHsuAOXfduCWLq8D_hD6YWS8tyWgDBTOl97pvhUN1CreoRX0vkVMgGhva7B77h_q6lBxZQlmKZgUzDYHVj0dVgqp3Iw7lyeUfvMUel1k3aagdHVyTlPnjF_ileSH0_nCfDrn0zW_w7PvzATvatWP1da7QBzT8HbgXgTvoG9DXHe7-wjUH677KX0Dg1ggV_asXzXVBmgmRxakbHuCJltWPePAb1N8N3OTskydaSjepChRd8yTH",
+  url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/BlockGroup_Arl_with_GrowthRate_AddKids_Final_COMPLETE/FeatureServer/0?token=l3-0a82PTrW_1hbl6q8kaPWVnlT_cdCJTKS8QEizALawNZ3hbDKsuTl4ZWPx20V7e-5pSag6D5VMDHgaFGelL0ahK2nH7TjCGRoN28AxVNMSDe9YwyctPZAkR0rozbOd_a3Zsy6oaH2DhhWcsxgl9iFgXhcmXmdLC1csKxuqhcf0r9qq1_UYfRt-O4tBTaOztCAjgXDS44LVSaOjzGj8NLPdbqiajXjglHO6fVnfYHPFl8d5q6Yggl5lu4ZuCojI",
   style: function(feature) {
-    if (feature.properties.Additional >= '243') {
+    if (feature.properties.Add2020 >= '50') {
       return {
-        color: '#154360',
-        weight: 2,
+        color: 'black',
+        fillColor: '#78281F',
+        weight: 1,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Additional < '243') & (feature.properties.Additional >= '151')) {
+    } else if ((feature.properties.Add2020 < '50') & (feature.properties.Add2020 > '0')) {
       return {
-        color: '#1A5276',
-        weight: 2,
+        color: 'black',
+        fillColor: '#E74C3C',
+        weight: 1,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Additional < '151') & (feature.properties.Additional >= '86')) {
+    } else if ((feature.properties.Add2020 < '0') & (feature.properties.Add2020 >= '-50')) {
       return {
-        color: '#1F618D',
-        weight: 2,
+        color: 'black',
+        fillColor: '#A9CCE3',
+        weight: 1,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Additional < '86') & (feature.properties.Additional >= '43')) {
+    }   else if ((feature.properties.Add2020 < '-50') & (feature.properties.Add2020 >= '-100')) {
       return {
-        color: '#2471A3',
-        weight: 2,
+        color: 'black',
+        fillColor: '#2980B9',
+        weight: 1,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Additional < '43') & (feature.properties.Additional >= '13.6')) {
+    }    else if ((feature.properties.Add2020 < '-100') & (feature.properties.Add2020 >= '-201')) {
       return {
-        color: '#2980B9',
-        weight: 2,
+        color: 'black',
+        fillColor: '#154360',
+        weight: 1,
         opacity: 1,
         fillOpacity: 1
       };
-    } else if ((feature.properties.Additional < '13.6') & (feature.properties.Additional >= '-1')) {
+    }   else {
       return {
-        color: '#5499C7',
-        weight: 2,
-        opacity: 1,
-        fillOpacity: 1
-      };
-    }  else if ((feature.properties.Additional < '-1') & (feature.properties.Additional >= '-9')) {
-      return {
-        color: '#7FB3D5',
-        weight: 2,
-        opacity: 1,
-        fillOpacity: 1
-      };
-    }  else if ((feature.properties.Additional < '-9') & (feature.properties.Additional >= '-20')) {
-      return {
-        color: '#A9CCE3',
-        weight: 2,
-        opacity: 1,
-        fillOpacity: 1
-      };
-    }   else if ((feature.properties.Additional < '-20') & (feature.properties.Additional >= '-35.4')) {
-      return {
-        color: '#D4E6F1',
-        weight: 2,
-        opacity: 1,
-        fillOpacity: 1
-      };
-    }   else if ((feature.properties.Additional < '-35.4') & (feature.properties.Additional >= '-46')) {
-      return {
-        color: '#EAF2F8',
-        weight: 2,
+        color: 'black',
+        fillColor: 'black',
+        weight: 1,
         opacity: 1,
         fillOpacity: 1
       };
@@ -433,7 +411,7 @@ var censusBlocksWithoutLandCover = L.esri.featureLayer({
 $("#censusBlocksRemLandCover").on("click", function() {
   if (this.checked === true) {
     censusBlocksWithoutLandCover.addTo(map);
-    var popupTemplate = "<h3>Census Block Group</h3><h4>Urban %: <strong>{URBAN}</strong><h4><h5>Average Growth Rate 2013-2016: <strong>{AvgGrowthR}%<strong></h5><br><h5>Projected Additional/Reduction Age 5-17 2016-2019: <strong>{Additional}<strong></h5>";
+    var popupTemplate = "<h3>Census Block Group</h3><h4>Urban %: <strong>{URBAN}</strong><h4><h5>Average Growth Rate 2013-2016: <strong>{AvgGrowthR}%<strong></h5><br><h5>Projected Additional/Reduction Age 5-17 2016-2020 to account for: <strong>{Add2020}<strong></h5>";
     censusBlocksWithoutLandCover.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
@@ -450,7 +428,7 @@ var planningUnits = L.esri.featureLayer({
     if (feature.properties.Avg_Add203 > '219') {
       return {
         color: 'black',
-        fillColor: '#6E2C00',
+        fillColor: '#641E16',
         weight: 2,
         opacity: 1,
         fillOpacity: 0.8
@@ -458,7 +436,7 @@ var planningUnits = L.esri.featureLayer({
     } else if ((feature.properties.Avg_Add203 < '219') & (feature.properties.Avg_Add203 >= '108')) {
       return {
         color: 'black',
-        fillColor: '#873600',
+        fillColor: '#922B21',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
@@ -466,7 +444,7 @@ var planningUnits = L.esri.featureLayer({
     } else if ((feature.properties.Avg_Add203 < '108') & (feature.properties.Avg_Add203 >= '41')) {
       return {
         color: 'black',
-        fillColor: '#A04000',
+        fillColor: '#A93226',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
@@ -474,7 +452,7 @@ var planningUnits = L.esri.featureLayer({
     } else if ((feature.properties.Avg_Add203 < '41') & (feature.properties.Avg_Add203 >= '9.6')) {
       return {
         color: 'black',
-        fillColor: '#BA4A00',
+        fillColor: '#CD6155',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
@@ -482,7 +460,7 @@ var planningUnits = L.esri.featureLayer({
     } else if ((feature.properties.Avg_Add203 < '9.6') & (feature.properties.Avg_Add203 > '0')) {
       return {
         color: 'black',
-        fillColor: '#D35400',
+        fillColor: '#D98880',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
@@ -490,7 +468,7 @@ var planningUnits = L.esri.featureLayer({
     } else if ((feature.properties.Avg_Add203 < '0') & (feature.properties.Avg_Add203 >= '-29.4')) {
       return {
         color: 'black',
-        fillColor: '#DC7633',
+        fillColor: '#D4E6F1',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
@@ -498,7 +476,7 @@ var planningUnits = L.esri.featureLayer({
     }  else if ((feature.properties.Avg_Add203 < '-29.4') & (feature.properties.Avg_Add203 >= '-61')) {
       return {
         color: 'black',
-        fillColor: '#E59866',
+        fillColor: '#7FB3D5',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
@@ -506,7 +484,7 @@ var planningUnits = L.esri.featureLayer({
     }  else if ((feature.properties.Avg_Add203 < '-61') & (feature.properties.Avg_Add203 >= '-125')) {
       return {
         color: 'black',
-        fillColor: '#EDBB99',
+        fillColor: '#2471A3',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
@@ -514,7 +492,7 @@ var planningUnits = L.esri.featureLayer({
     }   else if ((feature.properties.Avg_Add203 < '-125') & (feature.properties.Avg_Add203 >= '-413')) {
       return {
         color: 'black',
-        fillColor: '#F6DDCC',
+        fillColor: '#1F618D',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
@@ -522,7 +500,7 @@ var planningUnits = L.esri.featureLayer({
     }   else if ((feature.properties.Avg_Add203 < '-413') & (feature.properties.Avg_Add203 >= '-560')) {
       return {
         color: 'black',
-        fillColor: '#FBEEE6',
+        fillColor: '#154360',
         weight: 2,
         opacity: 1,
         fillOpacity: 1
@@ -541,7 +519,7 @@ var planningUnits = L.esri.featureLayer({
 $("#arlPlanningUnitsWithInformation").on("click", function() {
   if (this.checked === true) {
     planningUnits.addTo(map);
-    var popupTemplate = "<h3>Arlington Planning Unit: <strong>{PU}</strong></h3><h4>Average Urban %: <strong>{Avg_Urban_}</strong><h4><h5>Average Projected Additional Age 5-17 per Planning Unit from 2016-2030: <strong>{Avg_Add203}<strong></h5>";
+    var popupTemplate = "<h3>Arlington Planning Unit: <strong>{PU}</strong></h3><h4>Average Urban %: <strong>{Avg_Urban_}</strong><h4><h5>Average Projected Additional Age 5-17 from 2016-2030 to account for: <strong>{Avg_Add203}<strong></h5>";
     planningUnits.bindPopup(function(e) {
       return L.Util.template(popupTemplate, e.feature.properties)
     });
