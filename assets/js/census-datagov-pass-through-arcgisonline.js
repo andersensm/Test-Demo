@@ -1,8 +1,126 @@
 var map = L.map('map').setView([38.8816, -77.0910], 12);
 L.esri.basemapLayer("DarkGray").addTo(map);
 
-
-
+//////////////////2013//////////////////
+    function getColor2013(d) {
+        return d > 295 ? '#8B0000' :
+               d > 180 ? '#FF4500' :
+               d > 105 ? 'yellow' :
+               d > 47 ? '#32CD32' :
+               d > 1  ? '#006400' :
+               // d > 1  ?   '' :
+                          'white';
+    }
+    var legendTitle2013 = L.control({position: 'topright'});
+    legendTitle2013.onAdd = function (map) {
+        var title = L.DomUtil.create('div', 'info legendTitle')
+        title.innerHTML = '2013 Census Age 5 to 17 Block Groups'
+        return title;
+    };
+    var legend2013 = L.control({position: 'bottomright'});
+    legend2013.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend'),
+            grades = [1,47,105,180,295],
+            labels = [];
+        // loop through our density intervals and generate a label with a colored square for each interval
+        for (var i = 0; i < grades.length; i++) {
+            div.innerHTML +=
+                '<i style="background:' + getColor2013(grades[i] + 1) + '"></i> ' +
+                grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '');
+        }
+        return div;
+    };
+//////////////////2013//////////////////
+//////////////////2014//////////////////
+    function getColor2014(d) {
+        return d > 295 ? '#8B0000' :
+               d > 180 ? '#FF4500' :
+               d > 105 ? 'yellow' :
+               d > 47 ? '#32CD32' :
+               d > 1  ? '#006400' :
+               // d > 1  ?   '' :
+                          'white';
+    }
+    var legendTitle2014 = L.control({position: 'topright'});
+    legendTitle2014.onAdd = function (map) {
+        var title = L.DomUtil.create('div', 'info legendTitle')
+        title.innerHTML = '2014 Census Age 5 to 17 Block Groups'
+        return title;
+    };
+    var legend2014 = L.control({position: 'bottomright'});
+    legend2014.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend'),
+            grades = [1,47,105,180,295],
+            labels = [];
+        // loop through our density intervals and generate a label with a colored square for each interval
+        for (var i = 0; i < grades.length; i++) {
+            div.innerHTML +=
+                '<i style="background:' + getColor2014(grades[i] + 1) + '"></i> ' +
+                grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '');
+        }
+        return div;
+    };
+//////////////////2014//////////////////
+//////////////////2015//////////////////
+function getColor2015(d) {
+    return d > 295 ? '#8B0000' :
+           d > 180 ? '#FF4500' :
+           d > 105 ? 'yellow' :
+           d > 47 ? '#32CD32' :
+           d > 1  ? '#006400' :
+           // d > 1  ?   '' :
+                      'white';
+}
+var legendTitle2015 = L.control({position: 'topright'});
+legendTitle2015.onAdd = function (map) {
+    var title = L.DomUtil.create('div', 'info legendTitle')
+    title.innerHTML = '2015 Census Age 5 to 17 Block Groups'
+    return title;
+};
+var legend2015 = L.control({position: 'bottomright'});
+legend2015.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [1,47,105,180,295],
+        labels = [];
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor2015(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '');
+    }
+    return div;
+};
+//////////////////2015//////////////////
+//////////////////2016//////////////////
+function getColor2016(d) {
+    return d > 295 ? '#8B0000' :
+           d > 180 ? '#FF4500' :
+           d > 105 ? 'yellow' :
+           d > 47 ? '#32CD32' :
+           d > 1  ? '#006400' :
+           // d > 1  ?   '' :
+                      'white';
+}
+var legendTitle2016 = L.control({position: 'topright'});
+legendTitle2016.onAdd = function (map) {
+    var title = L.DomUtil.create('div', 'info legendTitle')
+    title.innerHTML = '2016 Census Age 5 to 17 Block Groups'
+    return title;
+};
+var legend2016 = L.control({position: 'bottomright'});
+legend2016.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [1,47,105,180,295],
+        labels = [];
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor2016(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '');
+    }
+    return div;
+};
+//////////////////2016//////////////////
 var censusBlockGroups2013 = L.esri.featureLayer({
   url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/CensuPop2013_to_2016_v2/FeatureServer/0?token=yZe85f22vr00NKYr-r_1we_vueI9ayM_xnxMUJR87SKrHtFkdp6mYWd2bRAFQ8fdSN-SH_8Y0OkjM369IMBKazSPejnmv6ONJrhy-re6xmRUskgD1SovPwtMrdLfH_oXtGKH0zeVeWFo77oW5KjyEH-8FUdOUYn7_p4kca3EomorRaktz4gaiR-Sd56LdQiOn3uaJEpvjCXzGK54LaM_p2QhDeVDwmPVs-aM44IzwYQIvSi7xwbOvI-GzsmbM99m",
   style: function(feature) {
@@ -154,6 +272,9 @@ var censusBlockGroups2016 = L.esri.featureLayer({
 
 $("#censusDataGov1").on("click", function() {
   if (this.checked === true) {
+
+    legendTitle2013.addTo(map);
+    legend2013.addTo(map);
     //START/////Downloaded from Census.gov, table join with other census data to account for MEAN non-family household income information//
     censusBlockGroups2013.addTo(map);
     //
@@ -165,11 +286,16 @@ $("#censusDataGov1").on("click", function() {
     //END/////Downloaded from Census.gov//
   } else {
     map.removeLayer(censusBlockGroups2013)
+    map.removeControl(legendTitle2013)
+    map.removeControl(legend2013)
   }
 })
 
 $("#censusDataGov2").on("click", function() {
   if (this.checked === true) {
+
+    legendTitle2014.addTo(map);
+    legend2014.addTo(map);
     //START/////Downloaded from Census.gov, table join with other census data to account for MEAN non-family household income information//
     censusBlockGroups2014.addTo(map);
     //
@@ -181,11 +307,16 @@ $("#censusDataGov2").on("click", function() {
     //END/////Downloaded from Census.gov//
   } else {
     map.removeLayer(censusBlockGroups2014)
+    map.removeControl(legendTitle2014)
+    map.removeControl(legend2014)
   }
 })
 
 $("#censusDataGov3").on("click", function() {
   if (this.checked === true) {
+
+    legendTitle2015.addTo(map);
+    legend2015.addTo(map);
     //START/////Downloaded from Census.gov, table join with other census data to account for MEAN non-family household income information//
     censusBlockGroups2015.addTo(map);
     //
@@ -197,11 +328,16 @@ $("#censusDataGov3").on("click", function() {
     //END/////Downloaded from Census.gov//
   } else {
     map.removeLayer(censusBlockGroups2015)
+    map.removeControl(legendTitle2015)
+    map.removeControl(legend2015)
   }
 })
 
 $("#censusDataGov4").on("click", function() {
   if (this.checked === true) {
+
+    legendTitle2016.addTo(map);
+    legend2016.addTo(map);
     //START/////Downloaded from Census.gov, table join with other census data to account for MEAN non-family household income information//
     censusBlockGroups2016.addTo(map);
     //
@@ -213,6 +349,8 @@ $("#censusDataGov4").on("click", function() {
     //END/////Downloaded from Census.gov//
   } else {
     map.removeLayer(censusBlockGroups2016)
+    map.removeControl(legendTitle2016)
+    map.removeControl(legend2016)
   }
 })
 
