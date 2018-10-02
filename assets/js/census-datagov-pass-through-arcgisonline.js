@@ -495,10 +495,18 @@ $("#schools").on("click", function() {
 var censusBlocksWithoutLandCover = L.esri.featureLayer({
   url: "https://services9.arcgis.com/l04XU2PBEtisYkwN/arcgis/rest/services/BlockGroup_Arl_with_GrowthRate_AddKids_Final_COMPLETE/FeatureServer/0?token=l3-0a82PTrW_1hbl6q8kaPWVnlT_cdCJTKS8QEizALawNZ3hbDKsuTl4ZWPx20V7e-5pSag6D5VMDHgaFGelL0ahK2nH7TjCGRoN28AxVNMSDe9YwyctPZAkR0rozbOd_a3Zsy6oaH2DhhWcsxgl9iFgXhcmXmdLC1csKxuqhcf0r9qq1_UYfRt-O4tBTaOztCAjgXDS44LVSaOjzGj8NLPdbqiajXjglHO6fVnfYHPFl8d5q6Yggl5lu4ZuCojI",
   style: function(feature) {
-    if (feature.properties.Add2020 >= '50') {
+    if (feature.properties.Add2020 >= '100') {
       return {
         color: 'black',
-        fillColor: '#78281F',
+        fillColor: '#641E16',
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 1
+      };
+    } else if ((feature.properties.Add2020 < '100') & (feature.properties.Add2020 > '50')) {
+      return {
+        color: 'black',
+        fillColor: '#E74C3C',
         weight: 1,
         opacity: 1,
         fillOpacity: 1
@@ -506,7 +514,7 @@ var censusBlocksWithoutLandCover = L.esri.featureLayer({
     } else if ((feature.properties.Add2020 < '50') & (feature.properties.Add2020 > '0')) {
       return {
         color: 'black',
-        fillColor: '#E74C3C',
+        fillColor: '#D98880',
         weight: 1,
         opacity: 1,
         fillOpacity: 1
@@ -546,8 +554,41 @@ var censusBlocksWithoutLandCover = L.esri.featureLayer({
     }
   }
 })
+
+function getColorBlock(d) {
+    return d > 100 ? '#641E16' :
+           d > 50 ? '#E74C3C' :
+           d > 1 ? '#D98880' :
+           d > -50 ? '#A9CCE3' :
+           d > -100 ? '#2980B9' :
+           d > -201  ?   '#154360' :
+           // d > 1  ?   '' :
+                      'white';
+}
+var legendTitleBlock = L.control({position: 'topright'});
+legendTitleBlock.onAdd = function (map) {
+    var title = L.DomUtil.create('div', 'info legendTitle')
+    title.innerHTML = '2016-2020 Projected Growth For Age 5 to 17 Per Block Group'
+    return title;
+};
+var legendBlock = L.control({position: 'bottomright'});
+legendBlock.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [-201, -100 , -50 , 1, 50, 100],
+        labels = [];
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColorBlock(grades[i] + 1) + '"></i> ' +
+            grades[i] + '  ' + (grades[i + 1] ? '&ndash;' + '  ' + grades[i + 1] + '<br>' : '+');
+    }
+    return div;
+};
 $("#censusBlocksRemLandCover").on("click", function() {
   if (this.checked === true) {
+
+    legendTitleBlock.addTo(map)
+    legendBlock.addTo(map)
     censusBlocksWithoutLandCover.addTo(map);
     var popupTemplate = "<h3>Census Block Group</h3><h4>Urban %: <strong>{URBAN}</strong><h4><h5>Average Growth Rate 2013-2016: <strong>{AvgGrowthR}%<strong></h5><br><h5>Projected Additional/Reduction Age 5-17 2016-2020 to account for: <strong>{Add2020}<strong></h5>";
     censusBlocksWithoutLandCover.bindPopup(function(e) {
@@ -555,6 +596,8 @@ $("#censusBlocksRemLandCover").on("click", function() {
     });
   } else {
     map.removeLayer(censusBlocksWithoutLandCover)
+    map.removeControl(legendTitleBlock)
+    map.removeControl(legendBlock)
   }
 })
 ///////////////////Census Block Groups /w Additional Information////////////////////
@@ -654,8 +697,44 @@ var planningUnits = L.esri.featureLayer({
     }
   }
 })
+function getColorPlan(d) {
+    return d > 219 ? '#641E16' :
+           d > 108 ? '#922B21' :
+           d > 41 ? '#A93226' :
+           d > 9.6 ? '#CD6155' :
+           d > 1  ?   '#D98880' :
+           d > -29.4  ? '#D4E6F1' :
+           d > -61  ? '#7FB3D5' :
+           d > -125  ? '#2471A3' :
+           d > -413  ? '#1F618D' :
+           d > -560  ? '#154360' :
+           // d > 1  ?   '' :
+                      'white';
+}
+var legendTitlePlan = L.control({position: 'topright'});
+legendTitlePlan.onAdd = function (map) {
+    var title = L.DomUtil.create('div', 'info legendTitle')
+    title.innerHTML = '2016-2030 Projected Growth For Age 5 to 17 Per Planning Unit'
+    return title;
+};
+var legendPlan = L.control({position: 'bottomright'});
+legendPlan.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend'),
+        grades = [-560,-413,-125,-61,-29.4,1,9.6,41,108,219],
+        labels = [];
+    // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColorPlan(grades[i] + 1) + '"></i> ' +
+            grades[i] + ' ' + (grades[i + 1] ? '&ndash;' + '  ' + grades[i + 1] + '<br>' : '+');
+    }
+    return div;
+};
 $("#arlPlanningUnitsWithInformation").on("click", function() {
   if (this.checked === true) {
+
+    legendTitlePlan.addTo(map)
+    legendPlan.addTo(map)
     planningUnits.addTo(map);
     var popupTemplate = "<h3>Arlington Planning Unit: <strong>{PU}</strong></h3><h4>Average Urban %: <strong>{Avg_Urban_}</strong><h4><h5>Average Projected Additional Age 5-17 from 2016-2030 to account for: <strong>{Avg_Add203}<strong></h5>";
     planningUnits.bindPopup(function(e) {
@@ -663,6 +742,8 @@ $("#arlPlanningUnitsWithInformation").on("click", function() {
     });
   } else {
     map.removeLayer(planningUnits)
+    map.removeControl(legendTitlePlan)
+    map.removeControl(legendPlan)
   }
 })
 ///////////////////Planning Units 2030 /w Additional Information////////////////////
