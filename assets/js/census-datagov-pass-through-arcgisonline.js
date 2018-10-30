@@ -8,8 +8,8 @@ var map = L.map('map').setView([38.8816, -77.0910], 12);
 
 // OpenStreetMap_Mapnik.addTo(map)
 
-var wmsLayer= L.tileLayer.wms("http://localhost:8080/geoserver/CensusCounties5m/wms", {
-  layers: 'CensusCounties5m:USCounties_5m_WGS84_Continental_v2',
+var wmsLayer= L.tileLayer.wms("http://localhost:8080/geoserver/PostgreSQL-USCounties/wms", {
+  layers: 'PostgreSQL-USCounties:uscounties_5m_wgs84_continental_v2',
   format: 'image/png',
   transparent: true,
   attribution: 'Socially Determined Inc.'
