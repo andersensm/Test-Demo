@@ -8,6 +8,8 @@ var map = L.map('map').setView([38.8816, -77.0910], 12);
 
 // OpenStreetMap_Mapnik.addTo(map)
 
+
+
 var wmsLayer= L.tileLayer.wms("http://localhost:8080/geoserver/PostgreSQL-USCounties/wms", {
   layers: 'PostgreSQL-USCounties:uscounties_5m_wgs84_continental_v2',
   format: 'image/png',
@@ -15,6 +17,14 @@ var wmsLayer= L.tileLayer.wms("http://localhost:8080/geoserver/PostgreSQL-USCoun
   attribution: 'Socially Determined Inc.'
 });
 wmsLayer.addTo(map);
+
+var wmsLayer2= L.tileLayer.wms("http://localhost:8080/geoserver/PostgreSQL-USCounties/wms", {
+  layers: 'PostgreSQL-USCounties:uscounties_centroid)wgs84',
+  format: 'image/png',
+  transparent: true,
+  attribution: 'Socially Determined Inc.'
+});
+wmsLayer2.addTo(map);
 
 //////////////////2013//////////////////
     function getColor2013(d) {
