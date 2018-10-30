@@ -1,5 +1,20 @@
 var map = L.map('map').setView([38.8816, -77.0910], 12);
-L.esri.basemapLayer("DarkGray").addTo(map);
+// L.esri.basemapLayer("DarkGray").addTo(map);
+
+// var OpenStreetMap_Mapnik = L.tileLayer('http://localhost:8080/geoserver/CensusCounties5m/wms', {
+// 	maxZoom: 19,
+// 	attribution: 'testing1212'
+// });
+
+// OpenStreetMap_Mapnik.addTo(map)
+
+var wmsLayer= L.tileLayer.wms("http://localhost:8080/geoserver/CensusCounties5m/wms", {
+  layers: 'CensusCounties5m:USCounties_5m_WGS84_Continental_v2',
+  format: 'image/png',
+  transparent: true,
+  attribution: 'Socially Determined Inc.'
+});
+wmsLayer.addTo(map);
 
 //////////////////2013//////////////////
     function getColor2013(d) {
