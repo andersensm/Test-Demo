@@ -1,4 +1,4 @@
-// var map = L.map('map').setView([38.8816, -77.0910], 1);
+// var map = L.map('map').setView([38.8816, -77.0910], 0);
 // map.maxBounds = L.latLngBounds(corner1, corner2)
 
 var southWest = L.latLng(-90, -180);
@@ -6,8 +6,9 @@ var northEast = L.latLng(90, 180);
 
 var map = new L.map('map', {
   zoomControl: false,
-  center: [38.8816, -77.0910],
-  zoom: 3,
+  
+  center: [32.3792, -86.3077],
+  zoom: 2,
   maxBounds: L.latLngBounds(southWest, northEast),
   minZoom: 2,
   maxZoom: 20
@@ -25,8 +26,8 @@ var map = new L.map('map', {
 
 
 
-var wmsLayer= L.tileLayer.wms("http://localhost:8080/geoserver/PostGresSQL_v2/wms?", {
-  layers: 'PostGresSQL_v2:uscounties_500k_wgs84_continental_pr_hi_ak_v4',
+var wmsLayer= L.tileLayer.wms("https://int-geoserver-01.internal.sd.research:8443/geoserver/Sean_Test/wms", {
+  layers: 'Sean_Test:ocean_labels_global, Sean_Test:ocean_polys_nondetailed, Sean_Test:AB_gis_osm_roads_free_1, Sean_Test:AB_gis_osm_railways_free_1, Sean_Test:country_polys_global_v2',
   format: 'image/png',
   transparent: true,
   attribution: 'Socially Determined Inc.'
