@@ -27,7 +27,20 @@ var map = new L.map('map', {
 
 
 var wmsLayer= L.tileLayer.wms("https://int-geoserver-01.internal.sd.research:8443/geoserver/Sean_Test/wms", {
-  layers: 'Sean_Test:ocean_labels_global, Sean_Test:ocean_polys_nondetailed, Sean_Test:AB_gis_osm_roads_free_1, Sean_Test:AB_gis_osm_railways_free_1, Sean_Test:country_polys_global_v2',
+  layers: 'Sean_Test:ocean_polys_nondetailed_basic_layer_v2, \
+  Sean_Test:country_polys_global_v2, \
+  Sean_Test:urban_polys_global, \
+  Sean_Test:World_10m_lakes, \
+  Sean_Test:country_polys_global_v2_base, \
+  Sean_Test:states_provinces_linear_global_without_us, \
+  Sean_Test:AB_gis_osm_roads_free_1, \
+  Sean_Test:MI_gis_osm_roads_free_1, \
+  Sean_Test:AB_gis_osm_railways_free_1, \
+  Sean_Test:MI_gis_osm_railways_free_1, \
+  Sean_Test:ocean_labels_global, \
+  Sean_Test:country_labels_global_v2, \
+  Sean_Test:states_provinces_labels_global, \
+  Sean_Test:populatedplaces_labels_global',
   format: 'image/png',
   transparent: true,
   attribution: 'Socially Determined Inc.'
