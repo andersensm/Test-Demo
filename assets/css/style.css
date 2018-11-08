@@ -15,9 +15,10 @@ time, mark, audio, video {
   font-family: 'Raleway', sans-serif;
 }
 html, body {
-  background-image: url("../images/City-Test2.jpg");
+  /* background-image: url("../images/City-Test2.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
+  background-color: black;
   padding: 0;
   margin: 0;
   height: 100%;
@@ -25,10 +26,11 @@ html, body {
   font-family: 'Montserrat', sans-serif;
 }
 #map {
+  float: right;
   height: 500px;
-  width: 100%;
-  border: black solid 3px;
-  border-radius: 25px;
+  width: 75%;
+  /* border: black solid 3px;
+  border-radius: 25px; */
 }
 #mapContainer {
   margin: 100px 0px;
