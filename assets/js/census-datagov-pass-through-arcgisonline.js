@@ -35,8 +35,6 @@ var wmsLayer= L.tileLayer.wms("https://int-geoserver-01.internal.sd.research:844
   Sean_Test:country_polys_global_v2_base, \
   Sean_Test:states_provinces_linear_global_without_us, \
   Sean_Test:MI_gis_osm_railways_free_1, \
-  Sean_Test:IL_gis_osm_railways_free_1, \
-  Sean_Test:IN_gis_osm_railways_free_1, \
   Sean_Test:ME_gis_osm_railways_free_1, \
   Sean_Test:NY_gis_osm_railways_free_1, \
   Sean_Test:OH_gis_osm_railways_free_1, \
@@ -49,9 +47,15 @@ var wmsLayer= L.tileLayer.wms("https://int-geoserver-01.internal.sd.research:844
   Sean_Test:CA_gis_osm_railways_free_1, \
   Sean_Test:CO_gis_osm_railways_free_1, \
   Sean_Test:CT_gis_osm_railways_free_1, \
+  Sean_Test:DE_gis_osm_railways_free_1, \
+  Sean_Test:DC_gis_osm_railways_free_1, \
+  Sean_Test:FL_gis_osm_railways_free_1, \
+  Sean_Test:GA_gis_osm_railways_free_1, \
+  Sean_Test:HI_gis_osm_railways_free_1, \
+  Sean_Test:ID_gis_osm_railways_free_1, \
+  Sean_Test:IL_gis_osm_railways_free_1, \
+  Sean_Test:IN_gis_osm_railways_free_1, \
   Sean_Test:MI_gis_osm_roads_free_1, \
-  Sean_Test:IL_gis_osm_roads_free_1, \
-  Sean_Test:IN_gis_osm_roads_free_1, \
   Sean_Test:ME_gis_osm_roads_free_1, \
   Sean_Test:NY_gis_osm_roads_free_1, \
   Sean_Test:OH_gis_osm_roads_free_1, \
@@ -64,6 +68,14 @@ var wmsLayer= L.tileLayer.wms("https://int-geoserver-01.internal.sd.research:844
   Sean_Test:CA_gis_osm_roads_free_1, \
   Sean_Test:CO_gis_osm_roads_free_1, \
   Sean_Test:CT_gis_osm_roads_free_1, \
+  Sean_Test:DE_gis_osm_roads_free_1, \
+  Sean_Test:DC_gis_osm_roads_free_1, \
+  Sean_Test:FL_gis_osm_roads_free_1, \
+  Sean_Test:GA_gis_osm_roads_free_1, \
+  Sean_Test:HI_gis_osm_roads_free_1, \
+  Sean_Test:ID_gis_osm_roads_free_1, \
+  Sean_Test:IL_gis_osm_roads_free_1, \
+  Sean_Test:IN_gis_osm_roads_free_1, \
   Sean_Test:ocean_labels_global, \
   Sean_Test:country_labels_global_v2, \
   Sean_Test:states_provinces_labels_global_v6, \
